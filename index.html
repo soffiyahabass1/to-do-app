@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <main class="app__container">
+    <main class="app__container" id="app">
             <header class="app__header">
 
                 <h1 class="h1">
@@ -21,8 +21,9 @@
                 <p>Stay focused and forget nothing</p>
             </header>
 
-            <div class="app__tasks-modal">
+            <div class="app__tasks-modal hidden" id="modal">
                 <p>Add a new task</p>
+                <button id="close-modal">x</button>
                 <input type="text"  placeholder="Title">
                 <input type="text"  placeholder="Description">
                 <button>
@@ -58,7 +59,7 @@
                 </div>
             </div>
 
-            <button class="app__btn-open--modal">
+            <button class="app__btn-open--modal" id="open-modal">
                 <i class="fa-solid fa-plus"></i>
             </button>
         

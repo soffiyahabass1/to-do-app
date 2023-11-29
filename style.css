@@ -39,3 +39,9 @@ img {
 .app__container > *:not(:last-child) {
   margin-bottom: 2rem;
 }
+/* JS controlled Styles */
+.hidden {
+  opacity: 0;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
