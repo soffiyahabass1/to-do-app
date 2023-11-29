@@ -1,0 +1,24 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "crea8genius intern develop team project",
+  "default":"index.html",
+
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hargent/to-do-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hargent/to-do-app/issues"
+  },
+  "homepage": "https://github.com/Hargent/to-do-app#readme",
+  "dependencies": {
+    "parcel": "^2.10.3"
+  }
+}
