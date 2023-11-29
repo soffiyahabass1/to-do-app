@@ -32,15 +32,16 @@
             </div>
             <div class="app__tasks-controls">
                 <button id="all" class="app__tasks-control">All</button>
-                <button id="complete" class="app__tasks-control">Complete</button>
+                <button id="completed" class="app__tasks-control">Complete</button>
                 <button id="in-progress" class="app__tasks-control">In progress</button>
             </div>
 
-            <div class="app__task-container">
+            <div class="app__task-container ">
 
-                <div class="app__task">
+                
+                <div class="app__task-tab" id="all-tab">
 
-                    <div class="taskk">
+                    <!-- <div class="taskk">
                         <p>
                             Task 1
                         </p>
@@ -54,7 +55,45 @@
                         
                         
 
-                    </div>
+                    </div> -->
+                    
+                </div>
+                <div class="app__task-tab hidden" id="in-progress-tab">
+
+                    <!-- <div class="taskk">
+                        <p>
+                            Task 1
+                        </p>
+                        <p>
+                            12:04
+                        </p>
+                        <div class=" ">
+                            <button><i class="fa-thin fa-pen"></i></button>
+                            <button><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        
+                        
+
+                    </div> -->
+                    
+                </div>
+                <div class="app__task-tab hidden" id="completed-tab">
+
+                    <!-- <div class="taskk">
+                        <p>
+                            Task 1
+                        </p>
+                        <p>
+                            12:04
+                        </p>
+                        <div class=" ">
+                            <button><i class="fa-thin fa-pen"></i></button>
+                            <button><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        
+                        
+
+                    </div> -->
                     
                 </div>
             </div>
@@ -65,15 +104,6 @@
         
         </main>
     
-
-
-
-
-
-
-
-
-
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

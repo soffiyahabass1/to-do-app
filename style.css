@@ -45,3 +45,14 @@ img {
   backface-visibility: hidden;
   pointer-events: none;
 }
+.app__task-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.app__task-tab {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
