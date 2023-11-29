@@ -13,55 +13,58 @@
 </head>
 <body>
     <main class="app__container">
-            <header class="app__header">
+            <div class="container">
+                <header class="app__header">
 
-                <h1 class="h1">
-                    Todo List
-                </h1>
-                <p>Stay focused and forget nothing</p>
-            </header>
-
-            <div class="app__tasks-modal">
-                <p>Add a new task</p>
-                <input type="text"  placeholder="Title">
-                <input type="text"  placeholder="Description">
-                <button>
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </div>
-            <div class="app__tasks-controls">
-                <button id="all" class="app__tasks-control">All</button>
-                <button id="complete" class="app__tasks-control">Complete</button>
-                <button id="in-progress" class="app__tasks-control">In progress</button>
-            </div>
-
-            <div class="app__task-container">
-
-                <div class="app__task">
-
-                    <div class="taskk">
-                        <p>
-                            Task 1
-                        </p>
-                        <p>
-                            12:04
-                        </p>
-                        <div class=" ">
+                    <h1 class="h1">
+                        To do List
+                    </h1>
+                    <p>Stay focused and forget nothing</p>
+                </header>
+    
+                <div class="app__tasks-modal">
+                    <p>Add a new task</p>
+                    <input type="text"  placeholder="Title">
+                    <input type="text"  placeholder="Description">
+                    <button>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                <div class="app__tasks-controls">
+                    <button id="all" class="app__tasks-control">All</button>
+                    <button id="complete" class="app__tasks-control">Complete</button>
+                    <button id="in-progress" class="app__tasks-control">In progress</button>
+                </div>
+    
+                <div class="app__task-container">
+    
+                    <div class="app__task">
+    
+                        <div class="taskk">
+                          <div class="task">
+                            <span>
+                                Task 1
+                            </span>
+                            <span class="time" >
+                                12:04
+                            </span>
                             <button><i class="fa-thin fa-pen"></i></button>
                             <button><i class="fa-solid fa-xmark"></i></button>
+                          </div>
+                           
+                            
+                            
+    
                         </div>
                         
-                        
-
                     </div>
-                    
                 </div>
+    
+                <button class="app__btn-open--modal">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            
             </div>
-
-            <button class="app__btn-open--modal">
-                <i class="fa-solid fa-plus"></i>
-            </button>
-        
         </main>
     
 
