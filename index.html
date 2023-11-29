@@ -12,27 +12,32 @@
 
 </head>
 <body>
-    <div class="container">
+    <main class="app__container">
+            <header class="app__header">
 
-        <div class="todo">
-            <h1 class="h1">
-                Todo List
-            </h1>
+                <h1 class="h1">
+                    Todo List
+                </h1>
+                <p>Stay focused and forget nothing</p>
+            </header>
 
-            <div class="input">
-                <input type="text"  placeholder="Add a new task">
-                <i class="fa-solid fa-plus"></i>
-
+            <div class="app__tasks-modal">
+                <p>Add a new task</p>
+                <input type="text"  placeholder="Title">
+                <input type="text"  placeholder="Description">
+                <button>
+                    <i class="fa-solid fa-plus"></i>
+                </button>
             </div>
-            <div class="btn">
-                <button class="all">All</button>
-                <button class="complete">Complete</button>
-                <button class="in-progress">In progress</button>
+            <div class="app__tasks-controls">
+                <button id="all" class="app__tasks-control">All</button>
+                <button id="complete" class="app__tasks-control">Complete</button>
+                <button id="in-progress" class="app__tasks-control">In progress</button>
             </div>
 
-            <div class="task">
+            <div class="app__task-container">
 
-                <div class="task-1">
+                <div class="app__task">
 
                     <div class="taskk">
                         <p>
@@ -41,16 +46,23 @@
                         <p>
                             12:04
                         </p>
-                        <i class="fa-thin fa-pen"></i>
-                        <i class="fa-solid fa-xmark"></i>
+                        <div class=" ">
+                            <button><i class="fa-thin fa-pen"></i></button>
+                            <button><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        
+                        
 
                     </div>
                     
                 </div>
             </div>
 
-        </div>
-    </div>
+            <button class="app__btn-open--modal">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        
+        </main>
     
 
 
