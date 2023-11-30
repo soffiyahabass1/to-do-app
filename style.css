@@ -1,98 +1,224 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@400;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,1000&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,500;1,600;1,700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Public+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,800&family=Raleway:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@400;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,1000&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,500;1,600;1,700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Public+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,800&family=Raleway:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,800;1,900&display=swap");
 
-  :root {
-    --white : #fff;
-    --black : #1c2b3d;
-    --blue : #31326f;
-    --color-grey : #eee;
-    --color-dark-grey : #222831;
-    --color-sec : 
-
-
-
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html{
-    font-size: 10px;
-  }
-  body{
-    font-family: 'Open Sans',sans-serif;
-  }
-  p{
-    font-size: 1.6rem;
-    line-height: 1.7;
-  }
-  img{
-    width: 100%;
-
-  }
-  .container{
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
-  }
+:root {
+  --white: #fff;
+  --black: #1c2b3d;
+  --blue: #31326f;
+  --color-grey: #eee;
+  --color-dark-grey: #222831;
+  --color-sec: ;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #2f363e;
+  padding: 30px;
+}
+p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+img {
+  width: 100%;
+}
+.app__container {
   
+  position: relative;
+  width: 600px;
+  height: 500px;
+  border-radius: 30px;
+  background: #2f363e;
+  padding: 30px 50px;
+  box-shadow: 25px 25px 75px rgba(0,0,0,0.25),
+  10px 10px 70px rgba(0,0,0,0.25),
+  inset 5px 5px 10px rgba(0,0,0,0.5),
+  inset 5px 5px 10px rgba(255,255,255,0.2),
+  inset 5px 5px 10px rgba(0,0,0,0.75);
 
-  .todo{
-    width: 100%;
-    max-width: 540px;
-    border: 1px solid var(--color-grey);
-    padding: 2rem;
-    background-color: var(--blue);
-    color: var(--white);
-    text-align: center;
-    justify-content: center;
-    border-radius: 5px;
-    height: 50vh;
-    margin: 2rem;
-  }
-  .todo >*{
-    margin-bottom: 2rem;
-  }
-  .h1{
-    font-size: 2rem;
-    font-weight: 900;
-    margin-top: 2rem;
-    text-transform:uppercase;
-    align-items: center;
-    margin-bottom: 20px;
+  /* width: 90%;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  background-color: var(--color-dark-grey);
+  color: var(--white);
+  border-radius: 5px; */
+}
+.app__container > *:not(:last-child) {
+  /* margin-bottom: 2rem;
+  margin-top: 1rem; */
+}
+.container{
+  /* width: 100%;
+  max-width: 540px;
+  margin: 200px auto 20px;
+  padding: 40px 30px 70px;
 
-  }
+  margin-top: 1rem; */
 
-  .input{ 
-     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #edeef0;
-    border-radius: 30px;
-    padding-left: 20px;
-    margin-bottom: 25px;
 
-  }
-  .input input{
-    flex:1 ;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 10px;
+}
+.app__header{
+ margin:10rem 5rem;
+ padding: 3rem; 
+}
+.app__header h1{
+  width: 100%;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.app__header p{
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.nothing{
+  color: orange;
+}
 
-  }
-  .input i{
-    border: none;
-    outline: none;
-    padding: 16px 50px;
-    background:#fff;
-    color: #fff;
-    border-radius: 40px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+.app__btn-open--modal{
+  border: none;
+  background-color: #fff;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  padding: 10px 30px;
+  margin: 1rem 2rem;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+
+
+}
+.app__btn-open--modal:hover{
+  background-color: #2f363e;
+  color: #fff;
+} 
+.app__tasks-modal{
+  
+  padding:0  5rem; 
+
+}
+.app__tasks-modal p{
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.app__tasks-modal input{
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  color: transparent;
+  background-color: white;
+  margin-left: 1rem;
+  
+}
+.app__tasks-modal button{
+  background-color: white;
+  margin: 1rem;
+  border-radius: 50%;
+  margin: 1rem;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+  
+}
+.app__tasks-modal button:hover{
+  background-color:var(--blue);
+  /* font-size: 3rem; */
+
+}
+.app__tasks-modal i{
+  color: black;
+  font-size: 2rem;
+}
+.app__tasks-controls{
+  margin: 4rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.app__tasks-controls >*{
+  margin-left: 2rem;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 20px;
+}
+.app__tasks-control{
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: black;
+ color: white;
+}
+#all{
+  padding-right: 6rem;
+  text-align: center;
+}
+
+.app__task-container{
+  display: flex;
+  
+}
+.app__task{
+  display: inline-block;
+}
+.taskk{
+  display: flex;
+  border: 2px solid white;
+  font-size: 1.5rem;
+  margin: 0 7rem;
+  padding: 1.5rem 10rem;
+  border-radius: 20px;
+}
+/* .task{
+  font-size: 1.5rem;
+  margin-right: 2rem;
+  padding: 2rem;
+  border: 2px solid var(--white);
+} */
+.taskk span{
+  
+  margin-right: 3rem;
+  
+}
+/* JS controlled Styles */
+.hidden {
+  opacity: 0;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+.app__task-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.app__task-tab {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
