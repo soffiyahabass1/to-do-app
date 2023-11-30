@@ -103,15 +103,18 @@
     margin: 4rem;
     border: none;
     background-color: orange;
-    color: #2f363e;
+    color: #a1adbb;
     font-size: 1.5rem;
     border-radius: 50px;
     cursor: pointer;
     text-transform: capitalize;
     text-decoration: none;
+    font-weight: 500;
    }
    .submit a{
     text-decoration: none;
+    font-weight: 500;
+    color:#2f363e;
    }
    .submit:hover{
     background-color: #fff;
