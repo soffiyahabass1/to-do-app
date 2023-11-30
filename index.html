@@ -8,22 +8,35 @@
 
 
     <script src="https://kit.fontawesome.com/7e8ce3cf0f.js" crossorigin="anonymous"></script>
+    <!-- <script src="_./node_modules/parsleyjs/dist/parsley.umd.min.js"></script> -->
+    <script src="script.js" type="module" async></script>
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
     <main class="app__container" id="app">
         <header class="app__header">
+<div class="">
 
-            <h1 class="h1">
-                Todo List
-            </h1>
-            <p>Stay focused and forget nothing</p>
+    <h1 class="h1">
+        Todo List
+    </h1>
+    <p>Stay focused and forget nothing</p>
+</div>
+<div class="">
+    <p>Hi, John</p>
+    <button class="app__btn-open--modal open-modal" id="signup-modal">
+        sign up
+    </button>
+    <button class="app__btn-open--modal open-modal" id="login-modal">
+        login
+    </button>
+</div>
         </header>
 
-        <div class="app__tasks-modal hidden" id="modal">
+        <div class="app__tasks-modal hidden modal" id="create-task">
             <p>Add a new task</p>
-            <button id="close-modal">x</button>
+            <button id="close-create-task" class="close-modal">x</button>
             <input type="text"  placeholder="Title">
             <input type="text"  placeholder="Description">
             <button>
@@ -100,12 +113,51 @@
             </div>
         </div>
 
-        <button class="app__btn-open--modal" id="open-modal">
+        <button class="app__btn-open--modal open-modal" id="create-task-modal">
             <i class="fa-solid fa-plus"></i>
         </button>
     
+        <!--Sign up-->
+        <div class= " modal hidden" id="signup">
+        <button id="close-signup" class="close-modal">x</button>
+            <form id="signUpForm" data-parsley-validate>
+                <div class="">
+                    <input type="email" id="signup-email" name="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="">
+                    <input type="text" id="signup-firstName" name="first_name">
+                    <label for="firstName">first name</label>
+                </div>
+                <div class="">
+                    <input type="text" id="signup-lastName" name="last_name">
+                    <label for="lastName">last name</label>
+                </div>
+                <div class="">
+                    <input type="password" id="signup-password" name="password">
+                    <label for="password">password</label>
+                </div>
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+        <div class= " modal hidden" id="login">
+        <button id="close-login" class="close-modal">x</button>
+            <form id="loginForm" data-parsley-validate>
+                <div class="">
+                    <input type="email" id="login-email " name="email">
+                    <label for="email">Email</label>
+                </div>
+                
+                <div class="">
+                    <input type="password" id="login-password" name="password">
+                    <label for="password">password</label>
+                </div>
+                <button type="submit">login</button>
+            </form>
+        </div>
+
     </main>
     
-    <script src="script.js" type="module"></script>
+    
 </body>
 </html>

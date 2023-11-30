@@ -2,8 +2,7 @@
   "name": "to-do-app",
   "version": "1.0.0",
   "description": "crea8genius intern develop team project",
-  "default":"index.html",
-
+  "default": "index.html",
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html"
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/Hargent/to-do-app#readme",
   "dependencies": {
-    "parcel": "^2.10.3"
+    "parcel": "^2.10.3",
+    "parsleyjs": "^2.9.2"
   }
 }
