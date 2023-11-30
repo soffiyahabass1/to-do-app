@@ -52,14 +52,17 @@ const signUpForm = document.getElementById("signUpForm");
 // parsley.init(form);
 async function signUpUser({ signUpData }) {
   console.log(signUpData, "is the signup data");
-  const signedUpUser = await fetch(`${BASE_API_URL}/api/users`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(signUpData)
-  });
-  return signedUpUser;
+  const signedUpUser = await fetch(
+    `https://todo-fastapi-338k.onrender.com/api/users`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(signUpData)
+    }
+  );
+  return signedUpUser.json();
 }
 
 signUpForm.addEventListener("submit", function (event) {
