@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@400;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,1000&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,500;1,600;1,700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Public+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,800&family=Raleway:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,800;1,900&display=swap");
+
+:root {
+  --white: #fff;
+  --black: #1c2b3d;
+  --blue: #31326f;
+  --color-grey: #eee;
+  --color-dark-grey: #222831;
+  --color-sec: ;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #2f363e;
+  padding: 30px;
+}
+p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+img {
+  width: 100%;
+}
+.app__container {
+  
+  position: relative;
+  width: 600px;
+  height: 700px;
+  border-radius: 30px;
+  background: #2f363e;
+  padding: 30px 50px;
+  box-shadow: 25px 25px 75px rgba(0,0,0,0.25),
+  10px 10px 70px rgba(0,0,0,0.25),
+  inset 5px 5px 10px rgba(0,0,0,0.5),
+  inset 5px 5px 10px rgba(255,255,255,0.2);
+ 
+  
+}
+.app__container > *:not(:last-child) {
+  /* margin-bottom: 2rem;
+  margin-top: 1rem; */
+}
+.container{
+
+
+}
+.app__header{
+ margin:1rem 3rem;
+ padding: 2rem; 
+}
+.app__header h1{
+  width: 100%;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.app__header p{
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.close-modal{
+    margin: 1rem;
+    padding: 5px 20px;
+    border: none;
+    background-color: orange;
+    color: #fff;
+    border-radius: 30px;
+   }
+   .close-modal:hover{
+    background-color: #fff;
+    color: orange;
+   }
+
+.nothing{
+  color: orange;
+  margin-left: 3px;
+}
+p{
+    display: flex;
+    margin-top: 20px;
+    font-size: 15px;
+    color: orange;
+    text-transform:capitalize;
+    margin-bottom: 10px;
+
+   }
+   input{
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 7px rgba(0,0,0,0.25),
+    inset 2px 2px 5px rgba(0,0,0,0.5),
+    inset -3px -3px 5px rgba(0,0,0,0.5),
+    
+
+
+   }
+   .i{
+    margin: 1rem;
+    padding: 10px 20px;
+    border: none;
+    background-color: orange;
+    color: #2f363e;
+    border-radius: 30px;
+    cursor: pointer;
+   }
+   .i:hover{
+    background-color: #fff;
+    color: orange;
+   }
+   .app__tasks-control{
+    margin: 1rem;
+    padding: 10px 20px;
+    border: none;
+    background-color: orange;
+    color: #2f363e;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    cursor: pointer;
+
+   }
+   .app__tasks-control:hover{
+    background-color: #fff;
+    color: orange;
+
+   }
+   .taskk li{
+    position:relative;
+    width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    margin: 20px;
+    font-size:1.5rem;
+    /* padding-right: 30px; */
+    /* padding: 10px; */
+    min-height: 45px;
+    cursor: pointer;
+    border-radius: 22.5px;
+    color: #2f363e;
+    padding-left: 20px;
+    box-shadow: 25px 25px 75px rgba(0,0,0,0.25),
+    10px 10px 70px rgba(0,0,0,0.25),
+    inset 5px 5px 10px rgba(0,0,0,0.5),
+    inset 5px 5px 10px rgba(255,255,255,0.2);
+   }
+  
+   li button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    position: relative;
+    right: -50px;
+    background: orange;
+    
+   }
+   .edit{
+    background: #fff;
+    padding-left: 25rem;
+   }
+
+   li button:hover{
+
+    background: #fff;
+   }
+
+ li::before{
+    content: "";
+    position: absolute;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+ }
+ li::after{
+    content: "";
+    position: absolute;
+    left: -42px;
+    width: 12px;
+    height: 6px;
+    border-left: 2px solid orange;
+    border-bottom: 2px solid orange;
+    transform: rotate(315deg);
+ }
+
+
+
+   

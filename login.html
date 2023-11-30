@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    
+    <link rel="stylesheet" href="login.css">
+    <script src="https://kit.fontawesome.com/7e8ce3cf0f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="div">
+        <div class="container">
+            <header class="app__header">
+                <button id="close-signup" class="close-modal"><a href="index.html"><i class="fa fa-home"></i></a></button>
+                <h1>
+                    Login
+                </h1>
+                <p>Don't have an account? <a href="form.html" class="a"> Sign up</a></p>
+                <div class= " modal hidden" id="login">
+                    <!-- <button id="close-login" class="close-modal">x</button> -->
+                        <form id="loginForm" data-parsley-validate>
+                            <div class="">
+                                <input type="email" id="login-email " name="email">
+                                <label for="email">Email</label>
+                            </div>
+                            
+                            <div class="">
+                                <input type="password" id="login-password" name="password">
+                                <label for="password">password</label>
+                            </div>
+                            <button type="submit" class="submit"><a href="todo.html">login</a></button>
+                        </form>
+                    </div>
+
+            </header>
+        </div>
+    </main>
+</body>
+</html>
