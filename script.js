@@ -91,6 +91,20 @@ signUpForm.addEventListener("submit", function (event) {
 });
 
 //! Login user
+async function loginUser({ loginData }) {
+  console.log(loginData, "is the login data");
+  const loggedInUser = await fetch(
+    `https://todo-fastapi-338k.onrender.com/api/users/login`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(loginData.username, loginData.password)
+    }
+  );
+  return loggedInUser.json();
+}
 // document.addEventListener("DOMContentLoaded", function () {
 const loginForm = document.getElementById("loginForm");
 // parsley.init(form);
@@ -106,8 +120,17 @@ loginForm.addEventListener("submit", function (event) {
     loginFormObject[key] = value;
   });
 
+  loginUser({ loginData: loginFormObject })
+    .then((userAccessToken) => {
+      console.log(userAccessToken);
+      return userAccessToken;
+    })
+    .catch((err) => {
+      console.log(err);
+      return null;
+    });
   // Log or use the form data as needed
-  console.log("login form Data:", loginFormObject);
+  // console.log("login form Data:", loginFormObject);
 });
 // });
 //! Getting all to do tasks
