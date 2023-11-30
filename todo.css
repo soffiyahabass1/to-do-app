@@ -117,20 +117,23 @@ p{
 
    }
    .i{
-    margin: 1rem;
     padding: 10px 20px;
     border: none;
     background-color: orange;
     color: #2f363e;
     border-radius: 30px;
     cursor: pointer;
+    /* display: flex;
+    flex-direction: row-reverse; */
+    margin-left: 45rem;
+       
    }
    .i:hover{
     background-color: #fff;
     color: orange;
    }
    .app__tasks-control{
-    margin: 1rem;
+    margin-left: 5rem;
     padding: 10px 20px;
     border: none;
     background-color: orange;

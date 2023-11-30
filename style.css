@@ -97,9 +97,9 @@ img {
 
 .app__btn-open--modal{
   border: none;
-  background-color: #fff;
-  color: black;
-  font-size: 1.5rem;
+  background-color:#2f363e;
+  color: #fff;
+  font-size: 2rem;
   border-radius: 20px;
   padding: 10px 30px;
   margin: 1rem 2rem;
@@ -110,8 +110,8 @@ img {
 
 }
 .app__btn-open--modal:hover{
-  background-color: #2f363e;
-  color: #fff;
+  background-color:#fff;
+  color: #2f363e;
 } 
 .app__tasks-modal{
   
