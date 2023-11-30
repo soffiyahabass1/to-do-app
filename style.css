@@ -18,6 +18,12 @@ html {
 }
 body {
   font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #2f363e;
+  padding: 30px;
 }
 p {
   font-size: 1.6rem;
@@ -27,7 +33,20 @@ img {
   width: 100%;
 }
 .app__container {
-  width: 90%;
+  
+  position: relative;
+  width: 600px;
+  height: 500px;
+  border-radius: 30px;
+  background: #2f363e;
+  padding: 30px 50px;
+  box-shadow: 25px 25px 75px rgba(0,0,0,0.25),
+  10px 10px 70px rgba(0,0,0,0.25),
+  inset 5px 5px 10px rgba(0,0,0,0.5),
+  inset 5px 5px 10px rgba(255,255,255,0.2),
+  inset 5px 5px 10px rgba(0,0,0,0.75);
+
+  /* width: 90%;
   margin: 0 auto;
   padding: 3rem 2rem;
   display: flex;
@@ -37,29 +56,31 @@ img {
   height: 100vh;
   background-color: var(--color-dark-grey);
   color: var(--white);
-  border-radius: 5px;
+  border-radius: 5px; */
 }
 .app__container > *:not(:last-child) {
-  margin-bottom: 2rem;
-  margin-top: 1rem;
+  /* margin-bottom: 2rem;
+  margin-top: 1rem; */
 }
 .container{
-  width: 100%;
+  /* width: 100%;
   max-width: 540px;
   margin: 200px auto 20px;
   padding: 40px 30px 70px;
 
-  margin-top: 1rem;
+  margin-top: 1rem; */
 
 
 }
 .app__header{
- margin: 1rem;
- padding: 3rem;
+ margin:10rem 5rem;
+ padding: 3rem; 
 }
 .app__header h1{
+  width: 100%;
   font-size: 5rem;
   font-weight: 900;
+  color: #fff;
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
@@ -67,7 +88,31 @@ img {
   font-size: 1.6rem;
   font-weight: 500;
   text-transform: capitalize;
+  color: #fff;
+  margin-bottom: 1rem;
 }
+.nothing{
+  color: orange;
+}
+
+.app__btn-open--modal{
+  border: none;
+  background-color: #fff;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  padding: 10px 30px;
+  margin: 1rem 2rem;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+
+
+}
+.app__btn-open--modal:hover{
+  background-color: #2f363e;
+  color: #fff;
+} 
 .app__tasks-modal{
   
   padding:0  5rem; 

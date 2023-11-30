@@ -21,20 +21,21 @@
     <h1 class="h1">
         Todo List
     </h1>
-    <p>Stay focused and forget nothing</p>
+    <p>Stay focused and forget <span class="nothing">nothing</span></p>
 </div>
-<div class="">
-    <p>Hi, John</p>
-    <button class="app__btn-open--modal open-modal" id="signup-modal">
+<div class="signup">
+    <p>Hi, <span class="nothing">John</span></p>
+    <a href="form.html"> <button class="app__btn-open--modal open-modal" id="signup-modal">
         sign up
-    </button>
-    <button class="app__btn-open--modal open-modal" id="login-modal">
-        login
-    </button>
+    </button></a>
+   <a href="login.html"> <button class="app__btn-open--modal open-modal" id="login-modal">
+    login
+</button></a>
+   
 </div>
         </header>
 
-        <div class="app__tasks-modal hidden modal" id="create-task">
+        <!-- <div class="app__tasks-modal hidden modal" id="create-task">
             <p>Add a new task</p>
             <button id="close-create-task" class="close-modal">x</button>
             <input type="text"  placeholder="Title">
@@ -47,7 +48,7 @@
             <button id="all" class="app__tasks-control">All</button>
             <button id="completed" class="app__tasks-control">Complete</button>
             <button id="in-progress" class="app__tasks-control">In progress</button>
-        </div>
+        </div> -->
 
         <div class="app__task-container ">
 
@@ -112,10 +113,10 @@
                 </div>
             </div>
         </div>
-
+<!-- 
         <button class="app__btn-open--modal open-modal" id="create-task-modal">
             <i class="fa-solid fa-plus"></i>
-        </button>
+        </button> -->
     
         <!--Sign up-->
         <div class= " modal hidden" id="signup">
