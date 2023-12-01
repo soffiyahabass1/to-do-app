@@ -20,9 +20,10 @@ html {
 body {
   font-family: "Open Sans", sans-serif;
   display: flex;
+  position: relative;
   /* justify-content: center; */
   /* align-items: center; */
-  min-height: 100vh;
+  height: 100vh;
   background: #2f363e;
   padding: 30px;
 }
@@ -37,16 +38,17 @@ img {
   /* position: relative; */
   /* width: 600px; */
   width: 80%;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  /* display: flex; */
+  /* flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   /* height: max-content !important; */
-  min-height: 100%;
+  /* min-height: 100%; */
 
   margin: 0 auto;
   /* height: 700px; */
-  border-radius: 30px;
+  /* border-radius: 30px; */
   background: #2f363e;
   /* background-color: red; */
   /* padding: 30px 50px; */
@@ -55,15 +57,79 @@ img {
     inset 5px 5px 10px rgba(255, 255, 255, 0.2); */
 }
 /* app__task-container */
-.app__container > *:not(:last-child) {
-  /* margin-bottom: 2rem;
-  margin-top: 1rem; */
-}
+/* .app__container > *:not(:last-child) {
+  margin-bottom: 2rem;
+  margin-top: 1rem; 
+}*/
 .container {
+  height: 100%;
+  /* position: relative; */
+  display: grid;
+  grid-template-rows: 20rem 10rem 1fr;
+  gap: 2rem;
+  width: 100%;
 }
+/* app header */
 .app__header {
-  margin: 1rem 3rem;
-  padding: 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 2rem;
+  place-items: center;
+
+  /* margin: 1rem 3rem;
+  padding: 2rem; */
+}
+.home_btn {
+  border-radius: 100%;
+  padding: 1rem;
+  color: white;
+  background: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  box-shadow: none;
+
+  & a {
+    text-decoration: none;
+  }
+  &:hover {
+    background: white;
+    color: orange;
+  }
+  & i {
+    color: white;
+  }
+  &:hover i {
+    color: orange;
+  }
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  & > *:not(:first-child) {
+    margin-left: 2rem;
+  }
+  & p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.btn-logout {
+  cursor: pointer;
+  border-radius: 100%;
+  padding: 1rem;
+  color: white;
+  background: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  box-shadow: none;
 }
 .app__header h1 {
   width: 100%;
@@ -80,6 +146,27 @@ img {
   color: #fff;
   margin-bottom: 1rem;
 }
+/* Task container */
+.app__task-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* Empty task  */
+.no-tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  transform: translateY(100%);
+
+  align-self: center;
+  justify-self: center;
+}
+/* Modal */
 .close-modal {
   margin: 1rem;
   padding: 5px 20px;
@@ -106,7 +193,7 @@ p {
   margin-bottom: 10px;
 }
 input {
-  position: relative;
+  /* position: relative; */
   width: 100%;
   border: none;
   outline: none;
@@ -124,6 +211,7 @@ input {
   color: #2f363e;
   border-radius: 30px;
   cursor: pointer;
+  margin-bottom: 2rem;
   /* display: flex;
     flex-direction: row-reverse; */
   margin-left: 45rem;
@@ -131,6 +219,16 @@ input {
 .i:hover {
   background-color: #fff;
   color: orange;
+}
+.app__tasks-controls {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app__tasks-controls > *:not(:last-child) {
+  margin-right: 2rem;
 }
 .app__tasks-control {
   margin-left: 5rem;
@@ -162,10 +260,11 @@ input {
 }
 .app__tasks-modal {
   position: fixed;
+  z-index: 100;
   width: 100%;
   top: 0;
   left: 0;
-  height: 100dvh;
+  height: 100vh;
   background-color: rgba(128, 128, 128, 0.705);
   display: flex;
   flex-direction: column;
@@ -174,8 +273,9 @@ input {
   justify-content: center;
 }
 .app__tasks-modal--content {
-  width: 60%;
+  width: 100%;
   margin: auto;
+  height: 700px;
   border-radius: 30px;
   background-color: wheat;
   padding: 4rem;
@@ -197,19 +297,24 @@ input {
 }
 .taskk {
   position: relative;
+ 
 }
 .app-tab-window {
   position: absolute;
+  & li {
+    position: relative;
+  }
 }
 .taskk li {
   position: relative;
-  width: calc(100% - 40px);
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #fff;
   margin: 20px;
   font-size: 1.5rem;
+  margin-top: 6rem;
   /* padding-right: 30px; */
   /* padding: 10px; */
   min-height: 45px;
@@ -274,9 +379,9 @@ li::after {
 }
 /* JS controlled Styles */
 .hidden {
-  opacity: 0;
-  backface-visibility: hidden;
-  pointer-events: none;
+  opacity: 1;
+  backface-visibility: visible;
+  pointer-events: visible;
 }
 
 .floating-btn {

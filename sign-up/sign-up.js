@@ -19,6 +19,7 @@ async function signUpUser({ signUpData }) {
   );
   return signedUpUser.json();
 }
+const errorElement = document.getElementById("error-message");
 
 signUpForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission
@@ -37,12 +38,15 @@ signUpForm.addEventListener("submit", function (event) {
       if (Object.keys(user).length > 0) {
         Cookies.set("user_access_token", user.access_token, { path: "/" });
         router("/todo/todo.html");
+      } else {
+        let error = "Invalid username or password";
+        errorElement.innerHTML = error;
       }
       // return user;
     })
     .catch((err) => {
       console.log(err);
-      // return null;
+      return;
     });
 
   // Log or use the form data as needed

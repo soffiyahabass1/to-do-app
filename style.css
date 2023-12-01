@@ -91,8 +91,12 @@ img {
   color: #fff;
   margin-bottom: 1rem;
 }
+.note{
+  font-size: 1rem;
+}
 .nothing {
   color: orange;
+  text-decoration: none;
 }
 
 .app__btn-open--modal {
@@ -102,8 +106,10 @@ img {
   font-size: 2rem;
   border-radius: 20px;
   padding: 10px 30px;
-  margin: 1rem 2rem;
+  margin: 1rem 10rem;
   text-align: center;
+  justify-self: center;
+  align-items: center;
   text-transform: capitalize;
   cursor: pointer;
 }
@@ -132,7 +138,7 @@ img {
   background-color: white;
   margin: 1rem;
   border-radius: 50%;
-  margin: 1rem;
+  margin: 1rem 5rem;
   height: 4rem;
   width: 4rem;
   cursor: pointer;
@@ -200,7 +206,7 @@ img {
   backface-visibility: hidden;
   pointer-events: none;
 }
-.app__task-container {
+/* .app__task-container {
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -210,7 +216,7 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%);
-}
+} */
 /* App Page Loader */
 .loader-container {
   display: none;

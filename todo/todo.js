@@ -1,5 +1,3 @@
-//! Get current user
-
 import "flatpickr/dist/themes/dark.css";
 
 import { renderTasks, router } from "../script";
@@ -11,9 +9,7 @@ flatpickr("#date-picker", {
   enableTime: true,
   dateFormat: "Y-m-d H:i"
 });
-
-// ! App Task State
-
+//! Get current user
 const token = Cookies.get("user_access_token") || null;
 if (!token) {
   router("login/login.html");
@@ -62,10 +58,10 @@ function getCurrentUserTodoList(token) {
       const userTodoListData = await response.json();
       console.log("API response for user todos:", userTodoListData);
 
-      const completedTasks = userTodoListData.filter(
+      const completedTasks = [...userTodoListData].filter(
         (task) => task.is_completed
       );
-      const unCompletedTasks = userTodoListData.filter(
+      const unCompletedTasks = [...userTodoListData].filter(
         (task) => !task.is_completed
       );
       console.log(unCompletedTasks, completedTasks);
@@ -125,21 +121,27 @@ createTaskForm.addEventListener("submit", function (event) {
 
   const createTaskFormObject = Object.fromEntries(createTaskFormData.entries());
   console.log(createTaskFormObject);
+  const noTaskElement = document.getElementById("no-tasks");
   createTask({ createTaskData: createTaskFormObject, token })
     .then((task) => {
       console.log(task);
-      const userTodoListData = [...task];
-      const completedTasks = userTodoListData.filter(
-        (task) => task.is_completed
-      );
-      const unCompletedTasks = userTodoListData.filter(
-        (task) => !task.is_completed
-      );
-      // console.log(unCompletedTasks, completedTasks);
-      renderTasks(userTodoListData, "all-tab-tasks");
-      renderTasks(completedTasks, "completed-tab-tasks");
-      renderTasks(unCompletedTasks, "in-progress-tab-tasks");
-      createTaskForm.classList.add("hidden");
+      if (task?.length) {
+        noTaskElement.classList.remove("hidden");
+      } else {
+        noTaskElement.classList.add("hidden");
+        const userTodoListData = [...task];
+        const completedTasks = [...userTodoListData].filter(
+          (task) => task.is_completed
+        );
+        const unCompletedTasks = [...userTodoListData].filter(
+          (task) => !task.is_completed
+        );
+        // console.log(unCompletedTasks, completedTasks);
+        renderTasks(userTodoListData, "all-tab-tasks");
+        renderTasks(completedTasks, "completed-tab-tasks");
+        renderTasks(unCompletedTasks, "in-progress-tab-tasks");
+        createTaskForm.classList.add("hidden");
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -178,3 +180,41 @@ function showTab(tabId) {
     selectedTabContent.classList.remove("hidden");
   }
 }
+
+//! Deleting task
+const tasksContainer = document.querySelectorAll(".app-tab-window");
+tasksContainer.forEach((container) => {
+  container.addEventListener("click", (event) => {
+    console.log(event.target, "the tadget");
+  });
+});
+//! Logout user
+const logoutBtn = document.getElementById("user-logout");
+function logoutCurrentUser(token) {
+  console.log("The access token is : ", token);
+  fetch("https://todo-fastapi-338k.onrender.com/api/users/logout", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  })
+    .then(async (response) => {
+      console.log(response);
+      if (response.ok) {
+        Cookies.remove("user_access_token");
+        router("/");
+        // return userData;
+      } else {
+        return;
+      }
+    })
+
+    .catch((error) => {
+      console.error("Error during API request:", error);
+      return null;
+    });
+}
+logoutBtn.addEventListener("click", () => {
+  logoutCurrentUser(token);
+});

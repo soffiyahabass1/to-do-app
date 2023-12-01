@@ -14,12 +14,13 @@ function createTaskElement(task) {
   const taskElement = document.createElement("li");
   // const taskElement = document.createElement("div");
   // taskElement.classList.add("task");
+  taskElement.setAttribute("id", task.id);
 
   taskElement.innerHTML = `
  
                     ${task.title}
-                    <button class="edit"><i class="fas fa-edit"></i></button>
-                    <button><i class="fa-solid fa-xmark"></i></button>
+                    <button class="edit" id={${task.id}}><i class="fas fa-edit"></i></button>
+                    <button id={${task.id}}><i class="fa-solid fa-xmark"></i></button>
             
                     `;
   // <p>${task.date}</p>
