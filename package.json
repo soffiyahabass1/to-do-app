@@ -5,7 +5,7 @@
   "default": "index.html",
   "scripts": {
     "dev": "parcel ../to-do-app/index.html --port 3000",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --no-scope-hoist"
   },
   "repository": {
     "type": "git",
