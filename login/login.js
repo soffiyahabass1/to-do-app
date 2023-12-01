@@ -1,7 +1,8 @@
 //! Login user
 
+import { router, togglePasswordVisibility } from "../script";
+
 import Cookies from "js-cookie";
-import { router } from "../script";
 
 async function loginUser({ loginData }) {
   // console.log(loginData, "is the login data");
@@ -58,4 +59,24 @@ loginForm.addEventListener("submit", function (event) {
     });
   // Log or use the form data as needed
   // console.log("login form Data:", loginFormObject);
+});
+//! showing password
+
+const passwordInput = document.getElementById("login-password");
+const toggleButton = document.getElementById("togglePassword");
+const showIcon = document.getElementById("show-password");
+const hideIcon = document.getElementById("hide-password");
+
+toggleButton.addEventListener("click", () => {
+  console.log(passwordInput, toggleButton);
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    hideIcon.classList.remove("hidden");
+    showIcon.classList.add("hidden");
+  } else {
+    passwordInput.type = "password";
+
+    hideIcon.classList.add("hidden");
+    showIcon.classList.remove("hidden");
+  }
 });

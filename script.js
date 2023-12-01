@@ -102,49 +102,13 @@ export const dummyTasks = [
 async function getAllTodo() {
   const todos = await fetch(`${BASE_API_URL}/todos`, {});
 }
-// ! open and close modals
-// // the open modal button
-// const modalOpenBtns = document.querySelectorAll(".open-modal");
-// const modalCloseBtns = document.querySelectorAll(".close-modal");
-// const modals = document.querySelectorAll(".modal");
-// modalOpenBtns.forEach((btn) =>
-//   btn.addEventListener("click", () => {
-//     modals.forEach((modal) => {
-//       // console.log(modal.id, btn.id);
-//       if (`${modal.id}-modal` === btn.id) {
-//         modal.classList.remove("hidden");
-//       } else {
-//         modal.classList.add("hidden");
-//       }
-//     });
-//   })
-// );
-// modalCloseBtns.forEach((btn) =>
-//   btn.addEventListener("click", () => {
-//     modals.forEach((modal) => {
-//       // console.log(modal.id, btn.id);
-//       if (`close-${modal.id}` === btn.id) {
-//         modal.classList.add("hidden");
-//       } else {
-//         return;
-//       }
-//     });
-//   })
-// );
-
-// const openModalBtn = document.getElementById("open-modal");
-// const closeModalBtn = document.getElementById("close-modal");
-// const modal = document.getElementById("modal");
-// openModalBtn.addEventListener("click", () => {
-//   modal.classList.toggle("hidden");
-// });
-// closeModalBtn.addEventListener("click", () => {
-//   modal.classList.toggle("hidden");
-// });
-
-// adding task
-
-// deleting task
-// editing task
-// opening task description
-// Function to create HTML structure for a each task
+//! Showing password
+export function togglePasswordVisibility({ passwordInput, toggleButton }) {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleButton.textContent = `<i class="fa-solid fa-eye"></i>`;
+  } else {
+    passwordInput.type = "password";
+    toggleButton.textContent = `<i class="fa-solid fa-eye-slash"></i>`;
+  }
+}

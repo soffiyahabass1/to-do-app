@@ -22,7 +22,7 @@
           </button>
           <h1>Login</h1>
 
-          <div class="modal hidden" id="login">
+          <div class="" id="login">
             <!-- <button id="close-login" class="close-modal">x</button> -->
             <form id="loginForm">
               <!-- <form id="loginForm" data-parsley-validate> -->
@@ -39,13 +39,22 @@
 
               <div class="">
                 <label for="password">password</label>
-                <input
-                  type="password"
-                  id="login-password"
-                  name="password"
-                  required
-                  autocomplete="current-password"
-                />
+                <div class="password-input">
+                  <input
+                    type="password"
+                    id="login-password"
+                    name="password"
+                    required
+                    autocomplete="current-password"
+                  />
+                  <button type="button" id="togglePassword">
+                    <i class="fa-solid fa-eye" id="show-password"></i>
+                    <i
+                      class="fa-solid fa-eye-slash hidden"
+                      id="hide-password"
+                    ></i>
+                  </button>
+                </div>
               </div>
               <a href="../todo/todo.html" class="a" style="display: none"
                 >login</a

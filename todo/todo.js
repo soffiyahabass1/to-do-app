@@ -58,10 +58,10 @@ function getCurrentUserTodoList(token) {
       const userTodoListData = await response.json();
       console.log("API response for user todos:", userTodoListData);
 
-      const completedTasks = [...userTodoListData].filter(
-        (task) => task.is_completed
-      );
-      const unCompletedTasks = [...userTodoListData].filter(
+      const tasksCompleted = [...userTodoListData];
+      const taksUnCompleted = [...userTodoListData];
+      const completedTasks = tasksCompleted.filter((task) => task.is_completed);
+      const unCompletedTasks = taksUnCompleted.filter(
         (task) => !task.is_completed
       );
       console.log(unCompletedTasks, completedTasks);
@@ -95,7 +95,7 @@ closeTaskModalBtn.addEventListener("click", (e) => {
 console.log(createTaskForm, "is the task form");
 // parsley.init(form);
 async function createTask({ createTaskData, token }) {
-  createTaskData.is_completed = false;
+  createTaskData.is_completed = true;
   console.log(createTaskData, "is the createTask data");
   const createdTask = await fetch(
     `https://todo-fastapi-338k.onrender.com/api/todos`,
@@ -171,6 +171,7 @@ function showTab(tabId) {
   const tabContents = document.querySelectorAll(".app-tab-window");
   tabContents.forEach((tabContent) => {
     tabContent.classList.add("hidden");
+    tabContent.style.zIndex = "";
   });
 
   // Show the selected tab content
@@ -178,6 +179,7 @@ function showTab(tabId) {
 
   if (selectedTabContent) {
     selectedTabContent.classList.remove("hidden");
+    selectedTabContent.style.zIndex = 5;
   }
 }
 

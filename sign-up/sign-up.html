@@ -50,14 +50,25 @@
                 autocomplete="name"
               />
             </div>
+
             <div class="">
               <label for="password">password</label>
-              <input
-                type="password"
-                id="signup-password"
-                name="password"
-                autocomplete="new-password"
-              />
+              <div class="password-input">
+                <input
+                  type="password"
+                  id="signup-password"
+                  name="password"
+                  required
+                  autocomplete="current-password"
+                />
+                <button type="button" id="togglePassword">
+                  <i class="fa-solid fa-eye" id="show-password"></i>
+                  <i
+                    class="fa-solid fa-eye-slash hidden"
+                    id="hide-password"
+                  ></i>
+                </button>
+              </div>
             </div>
             <p id="error-message" style="color: red; margin-top: 1.5rem"></p>
             <button type="submit" class="submit">

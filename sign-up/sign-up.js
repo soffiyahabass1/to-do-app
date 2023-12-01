@@ -52,9 +52,23 @@ signUpForm.addEventListener("submit", function (event) {
   // Log or use the form data as needed
   // console.log("Sign up form Data:", signUpFormObject, signedUpUser);
 });
-//
-// access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZ2ZoanZrQGdtYWlsLmNvbSIsImV4cCI6MTcwMTM3MzUwOH0.lFLWg6-mfC1Xw6jRTE_6RUoo7TlGqWe1rOhnlLU5JZs";
-// email: "ngfhjvk@gmail.com";
-// first_name: "David";
-// last_name: "Yemisi";
-// token_type: "bearer";
+//! showing password
+
+const passwordInput = document.getElementById("signup-password");
+const toggleButton = document.getElementById("togglePassword");
+const showIcon = document.getElementById("show-password");
+const hideIcon = document.getElementById("hide-password");
+
+toggleButton.addEventListener("click", () => {
+  console.log(passwordInput, toggleButton);
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    hideIcon.classList.remove("hidden");
+    showIcon.classList.add("hidden");
+  } else {
+    passwordInput.type = "password";
+
+    hideIcon.classList.add("hidden");
+    showIcon.classList.remove("hidden");
+  }
+});
