@@ -18,15 +18,20 @@
   <body>
     <main class="app__container">
       <div class="container">
-        <div class="app__todo-header">
-          <button id="close-signup" class="close-modal">
-            <a href="../index.html"><i class="fa fa-home"></i></a>
-          </button>
-          <p id="user-welcome"></p>
-        </div>
-
         <header class="app__header">
-          <div class="">
+          <div class="app__todo-header">
+            <button class="home_btn">
+              <a href="../index.html"><i class="fa fa-home"></i></a>
+            </button>
+            <div class="user-profile">
+              <p id="user-welcome"></p>
+              <button id="user-logout" class="btn-logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="app__todo-title">
             <h1 class="h1">Todo List</h1>
             <p>Stay focused and forget <span class="nothing"> nothing</span></p>
           </div>
@@ -70,6 +75,10 @@
         <div class="app__task-container">
           <div class="app__task">
             <div class="app__task-tab">
+              <div class="no-tasks" id="no-tasks">
+                <p>You are yet to add a task</p>
+                <p>Add a task today and enjoy our rich features</p>
+              </div>
               <div class="taskk">
                 <ul id="all-tab-tasks" class="app-tab-window"></ul>
                 <ul id="completed-tasks" class="app-tab-window hidden"></ul>
