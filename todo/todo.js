@@ -249,7 +249,7 @@ tabWindows.forEach((window) => {
       const isChecked = event.target.checked;
       const targetId = event.target.dataset.id;
       updateTask({
-        id: targetId,
+        id: Number(targetId),
         is_completed: isChecked
       });
       console.log(`Checkbox value is ${isChecked} for task ${targetId}`);
@@ -282,15 +282,19 @@ function deleteTask(taskId) {
 }
 // ! Edit task
 const updateTask = async (taskData) => {
+  console.log(taskData);
   try {
-    const response = await fetch("YOUR_API_ENDPOINT/" + taskData.id, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(taskData)
-    });
+    const response = await fetch(
+      `https://todo-fastapi-338k.onrender.com/api/todos`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(taskData)
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to update task");
@@ -329,7 +333,10 @@ checkboxes.forEach((checkbox) => {
 });
 // updating the whole task
 function generateEditForm(taskId) {
-  return ` <form class="app__tasks-modal hidden" id="edit-task">
+  // generate task data with id
+  // use the data as default values of the form being generated
+  //
+  ` <form class="app__tasks-modal hidden" id="edit-task">
           <button
             type="button"
             class="btn-close-modal"
@@ -357,4 +364,5 @@ function generateEditForm(taskId) {
             </button>
           </div>
         </form>`;
+  // put the modal inside th app
 }

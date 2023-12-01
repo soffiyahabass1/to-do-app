@@ -19,7 +19,7 @@ function createTaskElement(task) {
 
   taskElement.innerHTML = `
   <div class="task-checkbox">
-  <input type="checkbox" data-id=${task.id} class="task-status"/>
+  <input type="checkbox" defa data-id=${task.id} class="task-status"/>
   </div>
   <div class="task-item-details">
     <p>${task.title}</p>
@@ -51,8 +51,6 @@ export function router(path) {
   // window.location.replace(new_path);
   window.location.href = new_path;
 }
-
-const BASE_API_URL = `https://todo-fastapi-338k.onrender.com/api`;
 
 //! Showing password
 export function togglePasswordVisibility({ passwordInput, toggleButton }) {
