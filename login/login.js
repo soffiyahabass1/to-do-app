@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { router } from "../script";
 
 async function loginUser({ loginData }) {
-  console.log(loginData, "is the login data");
+  // console.log(loginData, "is the login data");
   const formData = new URLSearchParams();
 
   formData.append("username", loginData.username);
@@ -25,6 +25,7 @@ async function loginUser({ loginData }) {
 }
 // document.addEventListener("DOMContentLoaded", function () {
 const loginForm = document.getElementById("loginForm");
+const errorElement = document.getElementById("error-message");
 // parsley.init(form);
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission
@@ -41,10 +42,13 @@ loginForm.addEventListener("submit", function (event) {
   loginUser({ loginData: loginFormObject })
     .then((user) => {
       console.log(user);
-      if (Object.keys(user).length > 0) {
+      if (user.access_token) {
         Cookies.set("user_access_token", user.access_token, { path: "/" });
 
         router("todo/todo.html");
+      } else {
+        let error = "Invalid username or password";
+        errorElement.innerHTML = error;
       }
       // return user;
     })

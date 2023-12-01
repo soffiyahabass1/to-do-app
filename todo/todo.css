@@ -7,6 +7,7 @@
   --color-grey: #eee;
   --color-dark-grey: #222831;
   --color-sec: ;
+  --transition: all 0.3s ease-in-out;
 }
 * {
   margin: 0;
@@ -19,8 +20,8 @@ html {
 body {
   font-family: "Open Sans", sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   min-height: 100vh;
   background: #2f363e;
   padding: 30px;
@@ -33,16 +34,27 @@ img {
   width: 100%;
 }
 .app__container {
-  position: relative;
-  width: 600px;
-  height: 700px;
+  /* position: relative; */
+  /* width: 600px; */
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* height: max-content !important; */
+  min-height: 100%;
+
+  margin: 0 auto;
+  /* height: 700px; */
   border-radius: 30px;
   background: #2f363e;
-  padding: 30px 50px;
-  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+  /* background-color: red; */
+  /* padding: 30px 50px; */
+  /* box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
     10px 10px 70px rgba(0, 0, 0, 0.25), inset 5px 5px 10px rgba(0, 0, 0, 0.5),
-    inset 5px 5px 10px rgba(255, 255, 255, 0.2);
+    inset 5px 5px 10px rgba(255, 255, 255, 0.2); */
 }
+/* app__task-container */
 .app__container > *:not(:last-child) {
   /* margin-bottom: 2rem;
   margin-top: 1rem; */
@@ -124,17 +136,70 @@ input {
   margin-left: 5rem;
   padding: 10px 20px;
   border: none;
-  background-color: orange;
-  color: #2f363e;
+  text-align: center;
+  /* background-color: orange;
+  color: #2f363e; */
+  background-color: #fff;
+  color: orange;
   border-radius: 30px;
   cursor: pointer;
   font-size: 1.6rem;
   text-transform: capitalize;
   cursor: pointer;
+  /* transition: var(--transition); */
 }
+.active {
+  background-color: orange;
+  color: white;
+}
+/* .active:hover {
+  background-color: orange;
+  color: white;
+} */
 .app__tasks-control:hover {
-  background-color: #fff;
-  color: orange;
+  background-color: orange;
+  color: #fff;
+}
+.app__tasks-modal {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  background-color: rgba(128, 128, 128, 0.705);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+}
+.app__tasks-modal--content {
+  width: 60%;
+  margin: auto;
+  border-radius: 30px;
+  background-color: wheat;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & h1 {
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 5rem;
+  }
+  & p {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  & button {
+    align-self: flex-end;
+  }
+}
+.taskk {
+  position: relative;
+}
+.app-tab-window {
+  position: absolute;
 }
 .taskk li {
   position: relative;
@@ -205,5 +270,62 @@ li::after {
     text-transform: capitalize;
     font-weight: bold;
     color: orange;
+  }
+}
+/* JS controlled Styles */
+.hidden {
+  opacity: 0;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  transform: translate(-50%);
+
+  border-radius: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: larger;
+  cursor: pointer;
+
+  background-color: white;
+  box-shadow: 0px 0px 25px rgba(255, 166, 0, 0.25);
+  color: orange;
+  transition: var(--transition);
+}
+.floating-btn > i {
+  font-size: 3rem;
+}
+.floating-btn:hover {
+  background-color: orange;
+  color: white;
+  box-shadow: none;
+}
+.btn-close-modal {
+  cursor: pointer;
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  font-size: 2rem;
+  border: 1px solid orange;
+  background-color: transparent;
+  color: orange;
+  transition: var(--transition);
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  transform: translate(-100%);
+
+  &:hover {
+    background-color: orange;
+    color: white;
   }
 }

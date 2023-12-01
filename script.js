@@ -1,16 +1,37 @@
 //! UPDATE UI ON DATA Change
-// function updateUI() {
-//   const loggedInStatus = getCookie("loggedIn") === "true";
-//   if (loggedInStatus) {
-//     // Show elements for logged-in users
-//     document.getElementById("loggedInContent").style.display = "block";
-//     document.getElementById("loginButton").style.display = "none";
-//   } else {
-//     // Show elements for non-logged-in users
-//     document.getElementById("loggedInContent").style.display = "none";
-//     document.getElementById("loginButton").style.display = "block";
-//   }
-// }
+export function renderTasks(tasks, id) {
+  if (!id) return;
+  const tasksContainer = document.getElementById(id);
+
+  tasksContainer.innerHTML = ""; // Clear existing content
+
+  tasks.forEach((task) => {
+    const taskElement = createTaskElement(task);
+    tasksContainer.appendChild(taskElement);
+  });
+}
+function createTaskElement(task) {
+  const taskElement = document.createElement("li");
+  // const taskElement = document.createElement("div");
+  // taskElement.classList.add("task");
+
+  taskElement.innerHTML = `
+ 
+                    ${task.title}
+                    <button class="edit"><i class="fas fa-edit"></i></button>
+                    <button><i class="fa-solid fa-xmark"></i></button>
+            
+                    `;
+  // <p>${task.date}</p>
+  // <p>${task.title}</p>
+  // <p>${task.description}</p>
+  // <div class="task-buttons">
+  //   <button><i class="fa-thin fa-pen"></i></button>
+  //   <button><i class="fa-solid fa-xmark"></i></button>
+  // </div>
+
+  return taskElement;
+}
 //! Routing
 export function router(path) {
   if (!path) return;
