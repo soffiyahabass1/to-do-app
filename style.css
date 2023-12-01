@@ -33,18 +33,20 @@ img {
   width: 100%;
 }
 .app__container {
-  
   position: relative;
+  /* width: 70%;
+  min-width: 300px;
+  min-height: 100%;
+  margin: auto; */
   width: 600px;
   height: 500px;
   border-radius: 30px;
   background: #2f363e;
   padding: 30px 50px;
-  box-shadow: 25px 25px 75px rgba(0,0,0,0.25),
-  10px 10px 70px rgba(0,0,0,0.25),
-  inset 5px 5px 10px rgba(0,0,0,0.5),
-  inset 5px 5px 10px rgba(255,255,255,0.2),
-  inset 5px 5px 10px rgba(0,0,0,0.75);
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25), inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset 5px 5px 10px rgba(255, 255, 255, 0.2),
+    inset 5px 5px 10px rgba(0, 0, 0, 0.75);
 
   /* width: 90%;
   margin: 0 auto;
@@ -62,21 +64,19 @@ img {
   /* margin-bottom: 2rem;
   margin-top: 1rem; */
 }
-.container{
+.container {
   /* width: 100%;
   max-width: 540px;
   margin: 200px auto 20px;
   padding: 40px 30px 70px;
 
   margin-top: 1rem; */
-
-
 }
-.app__header{
- margin:10rem 5rem;
- padding: 3rem; 
+.app__header {
+  margin: 10rem 5rem;
+  padding: 3rem;
 }
-.app__header h1{
+.app__header h1 {
   width: 100%;
   font-size: 5rem;
   font-weight: 900;
@@ -84,20 +84,20 @@ img {
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
-.app__header p{
+.app__header p {
   font-size: 1.6rem;
   font-weight: 500;
   text-transform: capitalize;
   color: #fff;
   margin-bottom: 1rem;
 }
-.nothing{
+.nothing {
   color: orange;
 }
 
-.app__btn-open--modal{
+.app__btn-open--modal {
   border: none;
-  background-color:#2f363e;
+  background-color: #2f363e;
   color: #fff;
   font-size: 2rem;
   border-radius: 20px;
@@ -106,34 +106,29 @@ img {
   text-align: center;
   text-transform: capitalize;
   cursor: pointer;
-
-
 }
-.app__btn-open--modal:hover{
-  background-color:#fff;
+.app__btn-open--modal:hover {
+  background-color: #fff;
   color: #2f363e;
-} 
-.app__tasks-modal{
-  
-  padding:0  5rem; 
-
 }
-.app__tasks-modal p{
+.app__tasks-modal {
+  padding: 0 5rem;
+}
+.app__tasks-modal p {
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
-.app__tasks-modal input{
+.app__tasks-modal input {
   border: none;
   padding: 1rem;
   border-radius: 10px;
   color: transparent;
   background-color: white;
   margin-left: 1rem;
-  
 }
-.app__tasks-modal button{
+.app__tasks-modal button {
   background-color: white;
   margin: 1rem;
   border-radius: 50%;
@@ -141,52 +136,48 @@ img {
   height: 4rem;
   width: 4rem;
   cursor: pointer;
-  
 }
-.app__tasks-modal button:hover{
-  background-color:var(--blue);
+.app__tasks-modal button:hover {
+  background-color: var(--blue);
   /* font-size: 3rem; */
-
 }
-.app__tasks-modal i{
+.app__tasks-modal i {
   color: black;
   font-size: 2rem;
 }
-.app__tasks-controls{
+.app__tasks-controls {
   margin: 4rem;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
-.app__tasks-controls >*{
+.app__tasks-controls > * {
   margin-left: 2rem;
   padding: 1.5rem;
   border: none;
   border-radius: 20px;
 }
-.app__tasks-control{
+.app__tasks-control {
   font-size: 1.6rem;
   font-weight: 500;
   text-transform: capitalize;
   cursor: pointer;
   background-color: black;
- color: white;
+  color: white;
 }
-#all{
+#all {
   padding-right: 6rem;
   text-align: center;
 }
 
-.app__task-container{
+.app__task-container {
   display: flex;
-  
 }
-.app__task{
+.app__task {
   display: inline-block;
 }
-.taskk{
+.taskk {
   display: flex;
   border: 2px solid white;
   font-size: 1.5rem;
@@ -200,10 +191,8 @@ img {
   padding: 2rem;
   border: 2px solid var(--white);
 } */
-.taskk span{
-  
+.taskk span {
   margin-right: 3rem;
-  
 }
 /* JS controlled Styles */
 .hidden {
@@ -221,4 +210,26 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%);
+}
+/* App Page Loader */
+.loader-container {
+  display: none;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

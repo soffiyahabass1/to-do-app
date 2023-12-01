@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+    <script
+      src="https://kit.fontawesome.com/7e8ce3cf0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="todo.js" type="module" defer></script>
+    <link rel="stylesheet" href="todo.css" />
+  </head>
+  <body>
+    <main class="app__container">
+      <div class="container">
+        <div class="app__todo-header">
+          <button id="close-signup" class="close-modal">
+            <a href="../index.html"><i class="fa fa-home"></i></a>
+          </button>
+          <p id="user-welcome"></p>
+        </div>
+
+        <header class="app__header">
+          <div class="">
+            <h1 class="h1">Todo List</h1>
+            <p>Stay focused and forget <span class="nothing"> nothing</span></p>
+          </div>
+        </header>
+
+        <form class="app__tasks-modal hidden" id="create-task">
+          <button
+            type="button"
+            class="btn-close-modal"
+            id="close-add-task-modal"
+          >
+            x
+          </button>
+          <div class="app__tasks-modal--content">
+            <h1>To do</h1>
+            <p class="p">Add a new task</p>
+            <input type="text" placeholder="Title" name="title" />
+            <input type="text" placeholder="Description" name="description" />
+            <input
+              type="text"
+              id="date-picker"
+              name="due_date"
+              placeholder="Select Date and Time"
+            />
+            <button class="i" type="submit">
+              <i class="fa-solid fa-plus"></i>
+              <span>Add new</span>
+            </button>
+          </div>
+        </form>
+        <div class="app__tasks-controls">
+          <button id="all-tab" class="app__tasks-control active">All</button>
+          <button id="completed-tab" class="app__tasks-control">
+            Complete
+          </button>
+          <button id="in-progress-tab" class="app__tasks-control">
+            In progress
+          </button>
+        </div>
+
+        <div class="app__task-container">
+          <div class="app__task">
+            <div class="app__task-tab">
+              <div class="taskk">
+                <ul id="all-tab-tasks" class="app-tab-window"></ul>
+                <ul id="completed-tasks" class="app-tab-window hidden"></ul>
+                <ul
+                  id="in-progress-tab-tasks"
+                  class="app-tab-window hidden"
+                ></ul>
+              </div>
+            </div>
+            <button class="floating-btn" id="open-add-task-modal">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

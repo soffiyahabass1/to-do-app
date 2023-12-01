@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Hargent/to-do-app#readme",
   "dependencies": {
-    "parcel": "^2.10.3",
-    "parsleyjs": "^2.9.2"
+    "flatpickr": "^4.6.13",
+    "js-cookie": "^3.0.5",
+    "parcel": "^2.10.3"
   }
 }
