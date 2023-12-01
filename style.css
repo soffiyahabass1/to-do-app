@@ -206,7 +206,7 @@ img {
   backface-visibility: hidden;
   pointer-events: none;
 }
-.app__task-container {
+/* .app__task-container {
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -216,7 +216,7 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%);
-}
+} */
 /* App Page Loader */
 .loader-container {
   display: none;
