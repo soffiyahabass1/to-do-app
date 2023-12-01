@@ -18,13 +18,20 @@
   <body>
     <main class="app__container">
       <div class="container">
-        <div class="app__todo-header">
-          
-          <p id="user-welcome"></p>
-        </div>
+        <header class="app__header">
+          <div class="app__todo-header">
+            <button class="home_btn">
+              <a href="../index.html"><i class="fa fa-home"></i></a>
+            </button>
+            <div class="user-profile">
+              <p id="user-welcome"></p>
+              <button id="user-logout" class="btn-logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </button>
+            </div>
+          </div>
 
-        <!-- <header class="app__header">
-          <div class="">
+          <div class="app__todo-title">
             <h1 class="h1">Todo List</h1>
             <p>Stay focused and forget <span class="nothing"> nothing</span></p>
           </div>
@@ -37,11 +44,8 @@
             id="close-add-task-modal"
           >
             x
-          </button> -->
+          </button>
           <div class="app__tasks-modal--content">
-            <button id="close-signup" class="close-modal">
-              <a href="../index.html"><i class="fa fa-home"></i></a>
-            </button>
             <h1>To do</h1>
             <p class="p">Add a new task</p>
             <input type="text" placeholder="Title" name="title" />
@@ -56,8 +60,18 @@
               <i class="fa-solid fa-plus"></i>
               <span>Add new</span>
             </button>
+          </div>
+        </form>
+        <div class="app__tasks-controls">
+          <button id="all-tab" class="app__tasks-control active">All</button>
+          <button id="completed-tab" class="app__tasks-control">
+            Complete
+          </button>
+          <button id="in-progress-tab" class="app__tasks-control">
+            In progress
+          </button>
+        </div>
 
-            
         <div class="app__task-container">
           <div class="app__task">
             <div class="app__task-tab">
@@ -66,34 +80,17 @@
                 <p>Add a task today and enjoy our rich features</p>
               </div>
               <div class="taskk">
-                <ul id="all-tab-tasks" class="app-tab-window">
-                  <li>
-                    new task
-                  </li>
-                </ul>
+                <ul id="all-tab-tasks" class="app-tab-window"></ul>
                 <ul id="completed-tasks" class="app-tab-window hidden"></ul>
                 <ul
                   id="in-progress-tab-tasks"
-                  class="app-tab-window "
+                  class="app-tab-window hidden"
                 ></ul>
               </div>
-              <div class="app__tasks-controls">
-                <button id="all-tab" class="app__tasks-control active">All</button>
-                <button id="completed-tab" class="app__tasks-control">
-                  Complete
-                </button>
-                <button id="in-progress-tab" class="app__tasks-control">
-                  In progress
-                </button>
-          </div>
-        </form>
-       
-
-              </div>
             </div>
-            <!-- <button class="floating-btn" id="open-add-task-modal">
+            <button class="floating-btn" id="open-add-task-modal">
               <i class="fa-solid fa-plus"></i>
-            </button> -->
+            </button>
           </div>
         </div>
       </div>

@@ -36,13 +36,14 @@ function createTaskElement(task) {
 //! Routing
 export function router(path) {
   if (!path) return;
-  const base_path =
-    process.env.NODE_ENV === "production"
-      ? process.env.BASE_URL
-      : "http://localhost:3000/";
+  // const base_path =
+  //   process.env.NODE_ENV === "production"
+  //     ? process.env.BASE_URL
+  //     : "http://localhost:3000/";
   // Specify the URL of the success page
   // const successPageURL = "/success";
-  const new_path = `${base_path}${path}`;
+  // const new_path = `${base_path}${path}`;
+  const new_path = `http://localhost:3000/${path}`;
   console.log(new_path);
 
   // Redirect to the success page

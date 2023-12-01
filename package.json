@@ -4,7 +4,7 @@
   "description": "crea8genius intern develop team project",
   "default": "index.html",
   "scripts": {
-    "dev": "parcel ../to-do-app/index.html --port 3000",
+    "dev": "parcel index.html --port 3000",
     "build": "parcel build index.html --no-scope-hoist"
   },
   "repository": {
