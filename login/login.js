@@ -44,7 +44,7 @@ loginForm.addEventListener("submit", function (event) {
       if (Object.keys(user).length > 0) {
         Cookies.set("user_access_token", user.access_token, { path: "/" });
 
-        router("/todo/todo.html");
+        router("todo/todo.html");
       }
       // return user;
     })

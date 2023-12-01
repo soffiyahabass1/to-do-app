@@ -14,11 +14,18 @@
 //! Routing
 export function router(path) {
   if (!path) return;
+  const base_path =
+    process.env.NODE_ENV === "production"
+      ? process.env.BASE_URL
+      : "http://localhost:3000/";
   // Specify the URL of the success page
   // const successPageURL = "/success";
+  const new_path = `${base_path}${path}`;
+  console.log(new_path);
 
   // Redirect to the success page
-  window.location.href = path;
+  // window.location.replace(new_path);
+  window.location.href = new_path;
 }
 
 const BASE_API_URL = `https://todo-fastapi-338k.onrender.com/api`;

@@ -4,19 +4,20 @@ import { dummyTasks, router } from "../script";
 
 import Cookies from "js-cookie";
 
-const testGetUser = document.getElementById("get-user");
-testGetUser.addEventListener("click", () => {
-  getCurrentUser();
-});
+// const testGetUser = document.getElementById("get-user");
+// testGetUser.addEventListener("click", () => {
+//   getCurrentUser();
+// });
 // Function to make an API request with a token
+const userWelcome = document.getElementById("user-welcome");
 function getCurrentUser() {
   console.log("getting user info");
   // Replace 'YOUR_TOKEN' with the actual token
-  const token = Cookies.get("user_access_token") || "";
+  const token = Cookies.get("user_access_token") || null;
   if (!token) {
     router("/login/login.html");
   }
-
+  console.log("The access token is : ", token);
   fetch("https://todo-fastapi-338k.onrender.com/api/usersme", {
     method: "GET", // or 'POST', 'PUT', etc.
     headers: {
@@ -25,9 +26,10 @@ function getCurrentUser() {
     }
     // You can add other options like body for POST requests
   })
-    .then((response) => {
-      const userData = response.json();
-      console.log("API response:", data);
+    .then(async (response) => {
+      const userData = await response.json();
+      console.log("API response:", userData);
+      userWelcome.innerHTML = `Hi, ${userData.first_name} ${userData.last_name}`;
       return userData;
     })
     .catch((error) => {
@@ -35,7 +37,7 @@ function getCurrentUser() {
       return null;
     });
 }
-// window.onload = getCurrentUser;
+window.onload = getCurrentUser();
 // document.addEventListener("load", () => {
 //   console.log("getting user");
 //   const currentUser = getCurrentUser();
