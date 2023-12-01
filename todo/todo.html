@@ -62,6 +62,7 @@
             </button>
           </div>
         </form>
+
         <div class="app__tasks-controls">
           <button id="all-tab" class="app__tasks-control active">All</button>
           <button id="completed-tab" class="app__tasks-control">
@@ -73,26 +74,23 @@
         </div>
 
         <div class="app__task-container">
-          <div class="app__task">
-            <div class="app__task-tab">
-              <div class="no-tasks" id="no-tasks">
-                <p>You are yet to add a task</p>
-                <p>Add a task today and enjoy our rich features</p>
-              </div>
-              <div class="taskk">
-                <ul id="all-tab-tasks" class="app-tab-window"></ul>
-                <ul id="completed-tasks" class="app-tab-window hidden"></ul>
-                <ul
-                  id="in-progress-tab-tasks"
-                  class="app-tab-window hidden"
-                ></ul>
-              </div>
-            </div>
-            <button class="floating-btn" id="open-add-task-modal">
-              <i class="fa-solid fa-plus"></i>
-            </button>
+          <!-- <div class="app__task"> -->
+          <!-- <div class="app__task-tab"> -->
+          <div class="no-tasks" id="no-tasks">
+            <p>You are yet to add a task</p>
+            <p>Add a task today and enjoy our rich features</p>
           </div>
+          <!-- <div class="taskk"> -->
+          <div id="all-tab-tasks" class="app-tab-window"></div>
+          <div id="completed-tab-tasks" class="app-tab-window hidden"></div>
+          <div id="in-progress-tab-tasks" class="app-tab-window hidden"></div>
+          <!-- </div> -->
+          <!-- </div> -->
+          <!-- </div> -->
         </div>
+        <button class="floating-btn" id="open-add-task-modal">
+          <i class="fa-solid fa-plus"></i>
+        </button>
       </div>
     </main>
   </body>

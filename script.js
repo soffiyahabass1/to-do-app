@@ -1,8 +1,10 @@
 //! UPDATE UI ON DATA Change
-export function renderTasks(tasks, id) {
+export function renderTasks({ tasks, id }) {
+  console.log(tasks, id, "is the tab data");
   if (!id) return;
   const tasksContainer = document.getElementById(id);
 
+  console.log(tasksContainer, "is the task container");
   tasksContainer.innerHTML = ""; // Clear existing content
 
   tasks.forEach((task) => {
@@ -11,26 +13,25 @@ export function renderTasks(tasks, id) {
   });
 }
 function createTaskElement(task) {
-  const taskElement = document.createElement("li");
-  // const taskElement = document.createElement("div");
-  // taskElement.classList.add("task");
+  const taskElement = document.createElement("div");
+  taskElement.classList.add("task-item");
   taskElement.setAttribute("id", task.id);
 
   taskElement.innerHTML = `
- 
-                    ${task.title}
-                    <button class="edit" id={${task.id}}><i class="fas fa-edit"></i></button>
-                    <button id={${task.id}}><i class="fa-solid fa-xmark"></i></button>
+  <div class="task-checkbox">
+  <input type="checkbox" data-id=${task.id} class="task-status"/>
+  </div>
+  <div class="task-item-details">
+    <p>${task.title}</p>
+    <p>${task.description}</p>
+  </div>
+  <p class="task-item-date">${task.due_date}</p>
+  <div class="task-item-btns">
+    <button  class="edit-task open-edit-task-modal" data-id=${task.id}><i class="btn-icon fas fa-edit"></i></button>
+    <button class="delete-task" data-id=${task.id}><i class=" btn-icon fa-solid fa-trash-can"></i></button>
+  </div>
             
                     `;
-  // <p>${task.date}</p>
-  // <p>${task.title}</p>
-  // <p>${task.description}</p>
-  // <div class="task-buttons">
-  //   <button><i class="fa-thin fa-pen"></i></button>
-  //   <button><i class="fa-solid fa-xmark"></i></button>
-  // </div>
-
   return taskElement;
 }
 //! Routing
@@ -52,57 +53,7 @@ export function router(path) {
 }
 
 const BASE_API_URL = `https://todo-fastapi-338k.onrender.com/api`;
-//! Dummy data pending the fetching time
-export const dummyTasks = [
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: true
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: true
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: true
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  }
-];
 
-// });
-//! Getting all to do tasks
-async function getAllTodo() {
-  const todos = await fetch(`${BASE_API_URL}/todos`, {});
-}
 //! Showing password
 export function togglePasswordVisibility({ passwordInput, toggleButton }) {
   if (passwordInput.type === "password") {
