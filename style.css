@@ -34,14 +34,14 @@ p {
 } */
 .app__container {
   position: relative;
-  /* width: 70%;
+  /* width: 70%; */
   min-width: 300px;
   min-height: 100%;
-  margin: auto; */
+  margin: auto;
   /* background-image: url(./image/todo..jpeg); */
   width: 600px;
-  height: 500px;
- 
+  /* height: 500px; */
+
   border-radius: 30px;
   background: #2f363e;
   padding: 30px 50px;
@@ -85,13 +85,24 @@ p {
 .app__header {
   margin: 10rem 5rem;
   padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+
+  & > *:not(:last-child) {
+    margin-bottom: 3rem;
+  }
 }
 .app__header h1 {
+  font-family: fantasy;
+  letter-spacing: 1.5rem;
   width: 100%;
   font-size: 5rem;
   font-weight: 900;
-  color:#fff;
-  text-transform: capitalize;
+  color: #fff;
+  text-transform: uppercase;
   margin-bottom: 1rem;
 }
 .app__header p {
@@ -101,6 +112,21 @@ p {
   color: #fff;
   margin-bottom: 1rem;
 }
+.app__footer {
+  font-family: fantasy;
+
+  width: 100%;
+  text-align: center;
+  color: white;
+  & p {
+    letter-spacing: 1rem;
+
+    font-weight: 100;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+}
+
 .note {
   font-size: 1rem;
 }
@@ -122,10 +148,12 @@ p {
   align-items: center;
   text-transform: capitalize;
   cursor: pointer;
+  border: 1px solid orange;
 }
 .app__btn-open--modal:hover {
   background-color: #fff;
-  color: #2f363e;
+  border-color: transparent;
+  color: orange;
 }
 .app__tasks-modal {
   padding: 0 5rem;
@@ -209,6 +237,16 @@ p {
 } */
 .taskk span {
   margin-right: 3rem;
+}
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
 }
 /* JS controlled Styles */
 .hidden {

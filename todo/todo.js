@@ -12,7 +12,7 @@ flatpickr("#date-picker", {
 
 const noTaskElement = document.getElementById("no-tasks");
 // ! todo state
-let userTodoList = [];
+// let userTodoList = [];
 //! Get current user
 const token = Cookies.get("user_access_token") || null;
 if (!token) {
@@ -60,7 +60,7 @@ function getCurrentUserTodoList(token) {
     .then(async (response) => {
       // console.log(response, "get all todo response");
       const userTodoListData = await response.json();
-      userTodoList = [...userTodoListData];
+      // userTodoList = [...userTodoListData];
       // console.log("API response for user todos:", userTodoListData);
       if (userTodoListData.length <= 0) {
         noTaskElement.classList.remove("hidden");
@@ -161,7 +161,7 @@ createTaskForm.addEventListener("submit", function (event) {
   createTask({ createTaskData: createTaskFormObject, token })
     .then((task) => {
       // console.log(task);
-      userTodoList = [...task];
+      // userTodoList = [...task];
       if (task?.length <= 0) {
         noTaskElement.classList.remove("hidden");
       } else {
@@ -254,7 +254,7 @@ logoutBtn.addEventListener("click", () => {
 
 const tabWindows = document.querySelectorAll(".app-tab-window");
 tabWindows.forEach((window) => {
-  window.addEventListener("click", (event) => {
+  window.addEventListener("click", async (event) => {
     const target = event.target;
     // console.log("The current target is : ", target.classList);
     if (
@@ -273,14 +273,20 @@ tabWindows.forEach((window) => {
     if (target.classList.value === "task-status") {
       const isChecked = event.target.checked;
       const targetId = event.target.dataset.id;
-
-      const targetTask = userTodoList
-        .filter((task) => Number(task.id) === Number(targetId))
-        ?.at(0);
-      targetTask.is_completed = isChecked;
-
+      const targetTask = await getTodoById(targetId);
+      // const targetTask = userTodoList
+      //   .filter((task) => Number(task.id) === Number(targetId))
+      //   ?.at(0);
+      const updatedTask = {
+        id: targetTask.id,
+        title: targetTask.title,
+        description: targetTask.description,
+        is_completed: isChecked,
+        due_date: targetTask.due_date
+      };
+      console.log(updatedTask, "The state of checkbox");
       updateTask({
-        ...targetTask
+        ...updatedTask
       });
     }
   });
@@ -328,24 +334,24 @@ const updateTask = async (taskData) => {
       throw new Error("Failed to update task");
     }
 
-    // getCurrentUserTodoList(token);
-    const updatedTask = await response.json();
-    const otherList = userTodoList.filter(
-      (task) => Number(task.id) !== Number(updatedTask.id)
-    );
-    const userTodoListData = [...otherList, updatedTask];
-    const completedTasks = [...userTodoListData].filter((task) => {
-      return task.is_completed;
-      // return task.is_completed === true;
-    });
-    const unCompletedTasks = [...userTodoListData].filter((task) => {
-      return !task.is_completed;
-      // return task.is_completed === false;
-    });
-    // console.log(unCompletedTasks, completedTasks);
-    renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
-    renderTasks({ tasks: unCompletedTasks, id: "in-progress-tab-tasks" });
-    renderTasks({ tasks: completedTasks, id: "completed-tab-tasks" });
+    getCurrentUserTodoList(token);
+    // const updatedTask = await response.json();
+    // const otherList = userTodoList.filter(
+    //   (task) => Number(task.id) !== Number(updatedTask.id)
+    // );
+    // const userTodoListData = [...otherList, updatedTask];
+    // const completedTasks = [...userTodoListData].filter((task) => {
+    //   return task.is_completed;
+    //   // return task.is_completed === true;
+    // });
+    // const unCompletedTasks = [...userTodoListData].filter((task) => {
+    //   return !task.is_completed;
+    //   // return task.is_completed === false;
+    // });
+    // // console.log(unCompletedTasks, completedTasks);
+    // renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
+    // renderTasks({ tasks: unCompletedTasks, id: "in-progress-tab-tasks" });
+    // renderTasks({ tasks: completedTasks, id: "completed-tab-tasks" });
 
     return true;
     // console.log("Task updated successfully:", updatedTask);
@@ -375,7 +381,7 @@ async function generateEditForm(taskId) {
         <input type="text" placeholder="Description" name="description" value="${
           targetTask.description
         }" />
-        <input type="text" id="edit-date-picker" name="due_date" placeholder="Select Date and Time" value="${
+        <input type="text" id="edit-date-picker" name="due_date" placeholder="Select Due Date and Time" value="${
           targetTask.due_date
         }" />
         <div class="edit-task-checkbox">
@@ -426,7 +432,7 @@ async function generateEditForm(taskId) {
       is_completed: editTaskFormObject.is_completed === "on" ? true : false,
       due_date: editTaskFormObject.due_date
     };
-    console.log(editedTargetTask, editTaskFormData);
+    // console.log(editedTargetTask, editTaskFormData);
     const isUpdated = await updateTask({
       ...editedTargetTask
     });
