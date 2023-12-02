@@ -42,7 +42,9 @@ function createTaskElement(task) {
 }
 //! Routing
 export function router(path) {
+  console.log(path, "This is the next path");
   if (!path) return;
+
   const base_path =
     process.env.NODE_ENV === "production"
       ? process.env.BASE_URL

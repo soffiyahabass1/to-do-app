@@ -42,7 +42,7 @@ loginForm.addEventListener("submit", function (event) {
 
   loginUser({ loginData: loginFormObject })
     .then((user) => {
-      console.log(user);
+      // console.log(user);
       if (user.access_token) {
         Cookies.set("user_access_token", user.access_token, { path: "/" });
 
@@ -73,7 +73,7 @@ const showIcon = document.getElementById("show-password");
 const hideIcon = document.getElementById("hide-password");
 
 toggleButton.addEventListener("click", () => {
-  console.log(passwordInput, toggleButton);
+  // console.log(passwordInput, toggleButton);
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
     hideIcon.classList.remove("hidden");
