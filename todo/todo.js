@@ -16,7 +16,12 @@ const noTaskElement = document.getElementById("no-tasks");
 //! Get current user
 const token = Cookies.get("user_access_token") || null;
 if (!token) {
-  router("login/login.html");
+  const loginRoute =
+    process.env.NODE_ENV === "production"
+      ? process.env.LOGIN_ROUTE
+      : "/login/login.html";
+  router(loginRoute);
+  // router("login/login.html");
 }
 const userWelcome = document.getElementById("user-welcome");
 function getCurrentUser(token) {
@@ -35,7 +40,12 @@ function getCurrentUser(token) {
         userWelcome.innerHTML = `Hi, ${userData.first_name} ${userData.last_name}`;
         return userData;
       } else {
-        router("login/login.html");
+        const loginRoute =
+          process.env.NODE_ENV === "production"
+            ? process.env.LOGIN_ROUTE
+            : "/login/login.html";
+        router(loginRoute);
+        // router("login/login.html");
       }
     })
 
@@ -47,7 +57,12 @@ function getCurrentUser(token) {
 function getCurrentUserTodoList(token) {
   // const token = Cookies.get("user_access_token") || null;
   if (!token) {
-    router("login/login.html");
+    const loginRoute =
+      process.env.NODE_ENV === "production"
+        ? process.env.LOGIN_ROUTE
+        : "/login/login.html";
+    router(loginRoute);
+    // router("login/login.html");
   }
   // console.log("The access token is : ", token);
   fetch("https://todo-fastapi-338k.onrender.com/api/todos", {
