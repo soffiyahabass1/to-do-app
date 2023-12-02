@@ -66,10 +66,12 @@ function getCurrentUserTodoList(token) {
         noTaskElement.classList.add("hidden");
 
         const completedTasks = [...userTodoListData].filter((task) => {
-          return task.is_completed === true;
+          return task.is_completed;
+          // return task.is_completed === true;
         });
         const unCompletedTasks = [...userTodoListData].filter((task) => {
-          return task.is_completed === false;
+          return !task.is_completed;
+          // return task.is_completed === false;
         });
         console.log(unCompletedTasks, completedTasks);
         renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
@@ -248,9 +250,12 @@ tabWindows.forEach((window) => {
       console.log("setting task status : ", target.dataset.id);
       const isChecked = event.target.checked;
       const targetId = event.target.dataset.id;
+      // fetch all the  dat
       updateTask({
         id: Number(targetId),
-        is_completed: isChecked
+        is_completed: isChecked,
+        title,
+        description
       });
       console.log(`Checkbox value is ${isChecked} for task ${targetId}`);
     }
