@@ -37,11 +37,11 @@ signUpForm.addEventListener("submit", function (event) {
       console.log(user);
       if (Object.keys(user).length > 0) {
         Cookies.set("user_access_token", user.access_token, { path: "/" });
-        const todoRoute =
-          process.env.NODE_ENV === "production"
-            ? process.env.TO_DO_ROUTE
-            : "/todo/todo.html";
-        router(todoRoute);
+        // const todoRoute =
+        //   process.env.NODE_ENV === "production"
+        //     ? process.env.TO_DO_ROUTE
+        //     : "/todo/todo.html";
+        router("/todo/todo");
         // router("/todo/todo.html");
       } else {
         let error = "Invalid username or password";

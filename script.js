@@ -51,8 +51,9 @@ export function router(path) {
       : "http://localhost:3000/";
   // Specify the URL of the success page
   // const successPageURL = "/success";
-  const new_path = `${base_path}${path}`;
+  // const new_path = `${base_path}${path}`;
   // const new_path = `http://localhost:3000/${path}`;
+  const new_path = `https://to-do-app-cre8gen-interns.netlify.app${path}`;
   // console.log(new_path);
 
   // Redirect to the success page

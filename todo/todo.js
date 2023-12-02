@@ -16,11 +16,11 @@ const noTaskElement = document.getElementById("no-tasks");
 //! Get current user
 const token = Cookies.get("user_access_token") || null;
 if (!token) {
-  const loginRoute =
-    process.env.NODE_ENV === "production"
-      ? process.env.LOGIN_ROUTE
-      : "/login/login.html";
-  router(loginRoute);
+  // const loginRoute =
+  //   process.env.NODE_ENV === "production"
+  //     ? process.env.LOGIN_ROUTE
+  //     : "/login/login.html";
+  router("/login/login");
   // router("login/login.html");
 }
 const userWelcome = document.getElementById("user-welcome");
@@ -40,11 +40,11 @@ function getCurrentUser(token) {
         userWelcome.innerHTML = `Hi, ${userData.first_name} ${userData.last_name}`;
         return userData;
       } else {
-        const loginRoute =
-          process.env.NODE_ENV === "production"
-            ? process.env.LOGIN_ROUTE
-            : "/login/login.html";
-        router(loginRoute);
+        // const loginRoute =
+        //   process.env.NODE_ENV === "production"
+        //     ? process.env.LOGIN_ROUTE
+        //     : "/login/login.html";
+        router("/login/login");
         // router("login/login.html");
       }
     })
@@ -57,11 +57,11 @@ function getCurrentUser(token) {
 function getCurrentUserTodoList(token) {
   // const token = Cookies.get("user_access_token") || null;
   if (!token) {
-    const loginRoute =
-      process.env.NODE_ENV === "production"
-        ? process.env.LOGIN_ROUTE
-        : "/login/login.html";
-    router(loginRoute);
+    // const loginRoute =
+    //   process.env.NODE_ENV === "production"
+    //     ? process.env.LOGIN_ROUTE
+    //     : "/login/login.html";
+    router("/login/login");
     // router("login/login.html");
   }
   // console.log("The access token is : ", token);
