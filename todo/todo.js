@@ -9,8 +9,10 @@ flatpickr("#date-picker", {
   enableTime: true,
   dateFormat: "Y-m-d H:i"
 });
-const noTaskElement = document.getElementById("no-tasks");
 
+const noTaskElement = document.getElementById("no-tasks");
+// ! todo state
+let userTodoList = [];
 //! Get current user
 const token = Cookies.get("user_access_token") || null;
 if (!token) {
@@ -18,7 +20,7 @@ if (!token) {
 }
 const userWelcome = document.getElementById("user-welcome");
 function getCurrentUser(token) {
-  console.log("The access token is : ", token);
+  // console.log("The access token is : ", token);
   fetch("https://todo-fastapi-338k.onrender.com/api/usersme", {
     method: "GET",
     headers: {
@@ -29,7 +31,7 @@ function getCurrentUser(token) {
     .then(async (response) => {
       if (response.ok) {
         const userData = await response.json();
-        console.log("API response for getting user:", userData);
+        // console.log("API response for getting user:", userData);
         userWelcome.innerHTML = `Hi, ${userData.first_name} ${userData.last_name}`;
         return userData;
       } else {
@@ -47,7 +49,7 @@ function getCurrentUserTodoList(token) {
   if (!token) {
     router("login/login.html");
   }
-  console.log("The access token is : ", token);
+  // console.log("The access token is : ", token);
   fetch("https://todo-fastapi-338k.onrender.com/api/todos", {
     method: "GET",
     headers: {
@@ -56,15 +58,16 @@ function getCurrentUserTodoList(token) {
     }
   })
     .then(async (response) => {
-      console.log(response, "get all todo response");
+      // console.log(response, "get all todo response");
       const userTodoListData = await response.json();
-
-      console.log("API response for user todos:", userTodoListData);
+      userTodoList = [...userTodoListData];
+      // console.log("API response for user todos:", userTodoListData);
       if (userTodoListData.length <= 0) {
         noTaskElement.classList.remove("hidden");
+        noTaskElement.style.zIndex = 10;
       } else {
         noTaskElement.classList.add("hidden");
-
+        noTaskElement.style.zIndex = 0;
         const completedTasks = [...userTodoListData].filter((task) => {
           return task.is_completed;
           // return task.is_completed === true;
@@ -73,7 +76,7 @@ function getCurrentUserTodoList(token) {
           return !task.is_completed;
           // return task.is_completed === false;
         });
-        console.log(unCompletedTasks, completedTasks);
+        // console.log(unCompletedTasks, completedTasks);
         renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
         renderTasks({ tasks: unCompletedTasks, id: "in-progress-tab-tasks" });
         renderTasks({ tasks: completedTasks, id: "completed-tab-tasks" });
@@ -83,11 +86,32 @@ function getCurrentUserTodoList(token) {
     })
 
     .catch((error) => {
-      console.error("Error during API request:", error);
+      // console.error("Error during API request:", error);
       return null;
     });
 }
-
+async function getTodoById(Id) {
+  try {
+    const res = await fetch(
+      `https://todo-fastapi-338k.onrender.com/api/todos/${Id}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    const userTask = await res.json();
+    return userTask;
+  } catch (err) {
+    console.log("Error fetching task ", err);
+    const taskFromAppState = userTodoList
+      .filter((task) => Number(task.id) === Number(targetId))
+      ?.at(0);
+    return taskFromAppState;
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
   getCurrentUser(token);
   getCurrentUserTodoList(token);
@@ -104,11 +128,11 @@ closeTaskModalBtn.addEventListener("click", (e) => {
   createTaskForm.reset();
   createTaskForm.classList.add("hidden");
 });
-console.log(createTaskForm, "is the task form");
+// console.log(createTaskForm, "is the task form");
 // parsley.init(form);
 async function createTask({ createTaskData, token }) {
   createTaskData.is_completed = false;
-  console.log(createTaskData, "is the createTask data");
+  // console.log(createTaskData, "is the createTask data");
   const createdTask = await fetch(
     `https://todo-fastapi-338k.onrender.com/api/todos`,
     {
@@ -132,11 +156,12 @@ createTaskForm.addEventListener("submit", function (event) {
   // Convert FormData to a plain object
 
   const createTaskFormObject = Object.fromEntries(createTaskFormData.entries());
-  console.log(createTaskFormObject);
+  // console.log(createTaskFormObject);
 
   createTask({ createTaskData: createTaskFormObject, token })
     .then((task) => {
-      console.log(task);
+      // console.log(task);
+      userTodoList = [...task];
       if (task?.length <= 0) {
         noTaskElement.classList.remove("hidden");
       } else {
@@ -199,7 +224,7 @@ function showTab(tabId) {
 //! Logout user
 const logoutBtn = document.getElementById("user-logout");
 function logoutCurrentUser(token) {
-  console.log("The access token is : ", token);
+  // console.log("The access token is : ", token);
   fetch("https://todo-fastapi-338k.onrender.com/api/users/logout", {
     method: "POST",
     headers: {
@@ -208,7 +233,7 @@ function logoutCurrentUser(token) {
     }
   })
     .then(async (response) => {
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         Cookies.remove("user_access_token");
         router("/");
@@ -231,7 +256,7 @@ const tabWindows = document.querySelectorAll(".app-tab-window");
 tabWindows.forEach((window) => {
   window.addEventListener("click", (event) => {
     const target = event.target;
-    console.log(target.classList.value);
+    // console.log("The current target is : ", target.classList);
     if (
       target.classList.value !== "edit-task" &&
       target.classList.value !== "task-status" &&
@@ -240,26 +265,24 @@ tabWindows.forEach((window) => {
       return;
     if (target.classList.value === "delete-task") {
       deleteTask(Number(target.dataset.id));
-      console.log("deleting task : ", Number(target.dataset.id) === 1);
     }
     if (target.classList.value === "edit-task") {
-      generateEditForm(target.dataset.id);
       console.log("editing task : ", target.dataset.id);
+      generateEditForm(target.dataset.id);
     }
     if (target.classList.value === "task-status") {
-      console.log("setting task status : ", target.dataset.id);
       const isChecked = event.target.checked;
       const targetId = event.target.dataset.id;
-      // fetch all the  dat
+
+      const targetTask = userTodoList
+        .filter((task) => Number(task.id) === Number(targetId))
+        ?.at(0);
+      targetTask.is_completed = isChecked;
+
       updateTask({
-        id: Number(targetId),
-        is_completed: isChecked,
-        title,
-        description
+        ...targetTask
       });
-      console.log(`Checkbox value is ${isChecked} for task ${targetId}`);
     }
-    console.log(event.target.classList.value, " : is the current event");
   });
 });
 //! Deleting task
@@ -287,10 +310,10 @@ function deleteTask(taskId) {
 }
 // ! Edit task
 const updateTask = async (taskData) => {
-  console.log(taskData);
+  // console.log(taskData);
   try {
     const response = await fetch(
-      `https://todo-fastapi-338k.onrender.com/api/todos`,
+      `https://todo-fastapi-338k.onrender.com/api/todos${taskData.id}`,
       {
         method: "PUT",
         headers: {
@@ -305,69 +328,113 @@ const updateTask = async (taskData) => {
       throw new Error("Failed to update task");
     }
 
+    // getCurrentUserTodoList(token);
     const updatedTask = await response.json();
-    console.log("Task updated successfully:", updatedTask);
-    if (updatedTask?.length <= 0) {
-      noTaskElement.classList.remove("hidden");
-    } else {
-      noTaskElement.classList.add("hidden");
-      const userTodoListData = [...updatedTask];
-      const completedTasks = [...userTodoListData].filter(
-        (task) => task.is_completed === true
-      );
-      const unCompletedTasks = [...userTodoListData].filter(
-        (task) => task.is_completed === false
-      );
-      // console.log(unCompletedTasks, completedTasks);
+    const otherList = userTodoList.filter(
+      (task) => Number(task.id) !== Number(updatedTask.id)
+    );
+    const userTodoListData = [...otherList, updatedTask];
+    const completedTasks = [...userTodoListData].filter((task) => {
+      return task.is_completed;
+      // return task.is_completed === true;
+    });
+    const unCompletedTasks = [...userTodoListData].filter((task) => {
+      return !task.is_completed;
+      // return task.is_completed === false;
+    });
+    // console.log(unCompletedTasks, completedTasks);
+    renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
+    renderTasks({ tasks: unCompletedTasks, id: "in-progress-tab-tasks" });
+    renderTasks({ tasks: completedTasks, id: "completed-tab-tasks" });
 
-      renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
-      renderTasks({ tasks: completedTasks, id: "completed-tab-tasks" });
-      renderTasks({ tasks: unCompletedTasks, id: "in-progress-tab-tasks" });
-      createTaskForm.classList.add("hidden");
-    }
-    return updatedTask;
+    return true;
+    // console.log("Task updated successfully:", updatedTask);
   } catch (error) {
+    return false;
     console.error("Error updating task:", error.message);
     throw error;
   }
 };
-// updating just checkbox
-const checkboxes = document.querySelectorAll("task-status");
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", (event) => {});
-});
+
 // updating the whole task
-function generateEditForm(taskId) {
+async function generateEditForm(taskId) {
   // generate task data with id
   // use the data as default values of the form being generated
   //
-  ` <form class="app__tasks-modal hidden" id="edit-task">
-          <button
-            type="button"
-            class="btn-close-modal"
-            id="close-add-task-modal"
-          >
-            x
-          </button>
-          <div class="app__tasks-modal--content">
-            <h1>To do</h1>
-            <p class="p">Add a new task</p>
-            <input type="text" placeholder="Title" name="title" />
-            <input type="text" placeholder="Description" name="description" />
-            <input
-              type="text"
-              id="date-picker"
-              name="due_date"
-              placeholder="Select Date and Time"
-            />
-            <div class="task-checkbox">
-              <input type="checkbox" name="is_completed"/>
-            </div>
-            <button class="i" type="submit">
-              <i class="fa-solid fa-plus"></i>
-              <span>Add new</span>
-            </button>
-          </div>
-        </form>`;
+  const targetTask = await getTodoById(taskId);
+  console.log(targetTask, "This is the target tasks");
+  const editForm = `
+    <form class="app__tasks-modal" id="edit-task">
+      <button type="button" class="btn-close-modal" id="close-edit-task-modal">x</button>
+      <div class="app__tasks-modal--content">
+        <h1>To do</h1>
+        <p class="p">Edit task</p>
+        <input type="text" placeholder="Title" name="title" value="${
+          targetTask.title
+        }" />
+        <input type="text" placeholder="Description" name="description" value="${
+          targetTask.description
+        }" />
+        <input type="text" id="edit-date-picker" name="due_date" placeholder="Select Date and Time" value="${
+          targetTask.due_date
+        }" />
+        <div class="edit-task-checkbox">
+          <label>Completed : </label>
+          <input type="checkbox" name="is_completed" ${
+            targetTask.is_completed ? "checked" : ""
+          } />
+        </div>
+        <button class="i" type="submit">
+          <i class="fa-solid fa-edit"></i>
+          <span>Update</span>
+        </button>
+      </div>
+    </form>`;
   // put the modal inside th app
+  // Append the modal to the body
+  document.body.insertAdjacentHTML("beforeend", editForm);
+  // Add event listener to the close button
+  flatpickr("#edit-date-picker", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i"
+  });
+  document.addEventListener("click", (event) => {
+    // console.log(event.target.id);
+    if (event.target.id !== "close-edit-task-modal") return;
+    // Remove the modal from the DOM
+    const editTaskForm = document.getElementById("edit-task");
+    editTaskForm.remove();
+  });
+  // Add event listener to the form
+  // const editTaskForm = document.getElementById("edit-task");
+  document.addEventListener("submit", async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    if (event.target.id !== "edit-task") return;
+    // Get form data
+    const editTaskForm = event.target;
+    const editTaskFormData = new FormData(editTaskForm);
+
+    // Convert FormData to a plain object
+
+    const editTaskFormObject = Object.fromEntries(editTaskFormData.entries());
+
+    const editedTargetTask = {
+      id: targetTask.id,
+      title: editTaskFormObject.title,
+      description: editTaskFormObject.description,
+      is_completed: editTaskFormObject.is_completed === "on" ? true : false,
+      due_date: editTaskFormObject.due_date
+    };
+    console.log(editedTargetTask, editTaskFormData);
+    const isUpdated = await updateTask({
+      ...editedTargetTask
+    });
+    // Perform the update operation using the form data
+    // await updateTodo(taskId, formObject);
+    if (isUpdated) {
+      editTaskForm.remove();
+    }
+    // Close the modal or perform other actions as needed
+  });
 }

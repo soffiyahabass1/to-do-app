@@ -533,6 +533,45 @@ li::after {
     }
   }
 }
+
+/* customized checkbox */
+/* .custom-checkbox {
+  position: relative;
+}
+
+.hidden-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox-label {
+  width: 24px;
+  height: 24px;
+  background-color: orange;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.tick-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  display: none;
+}
+
+.hidden-checkbox:checked + .custom-checkbox-label {
+  background-color: orange;
+}
+
+.hidden-checkbox:checked + .custom-checkbox-label .tick-mark {
+  display: block;
+} */
 .task-checkbox {
   display: flex;
   align-items: center;
@@ -546,5 +585,29 @@ li::after {
     &:checked {
       background: orange;
     }
+  }
+}
+.edit-task-checkbox {
+  align-self: flex-start;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 1.5rem;
+
+  & input {
+    cursor: pointer;
+    appearance: none;
+    width: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    /* border: 1px solid orange; */
+    background-color: white;
+    &:checked {
+      background: orange;
+    }
+  }
+
+  & label {
+    font-size: 2rem;
   }
 }
