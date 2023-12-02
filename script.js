@@ -2,6 +2,7 @@
 export function renderTasks({ tasks, id }) {
   // console.log(tasks, id, "is the tab data");
   if (!id) return;
+
   const tasksContainer = document.getElementById(id);
 
   // console.log(tasksContainer, "is the task container");

@@ -80,6 +80,9 @@ function getCurrentUserTodoList(token) {
       if (userTodoListData.length <= 0) {
         noTaskElement.classList.remove("hidden");
         noTaskElement.style.zIndex = 10;
+        renderTasks({ tasks: [], id: "all-tab-tasks" });
+        renderTasks({ tasks: [], id: "in-progress-tab-tasks" });
+        renderTasks({ tasks: [], id: "completed-tab-tasks" });
       } else {
         noTaskElement.classList.add("hidden");
         noTaskElement.style.zIndex = 0;
