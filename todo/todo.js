@@ -196,7 +196,9 @@ createTaskForm.addEventListener("submit", function (event) {
         renderTasks({ tasks: userTodoListData, id: "all-tab-tasks" });
         renderTasks({ tasks: completedTasks, id: "completed-tab-tasks" });
         renderTasks({ tasks: unCompletedTasks, id: "in-progress-tab-tasks" });
+
         createTaskForm.classList.add("hidden");
+        createTaskForm.reset();
       }
     })
     .catch((err) => {
@@ -386,7 +388,7 @@ async function generateEditForm(taskId) {
   // use the data as default values of the form being generated
   //
   const targetTask = await getTodoById(taskId);
-  console.log(targetTask, "This is the target tasks");
+  // console.log(targetTask, "This is the target tasks");
   const editForm = `
     <form class="app__tasks-modal" id="edit-task">
       <button type="button" class="btn-close-modal" id="close-edit-task-modal">x</button>
@@ -457,6 +459,7 @@ async function generateEditForm(taskId) {
     // Perform the update operation using the form data
     // await updateTodo(taskId, formObject);
     if (isUpdated) {
+      editTaskForm.reset();
       editTaskForm.remove();
     }
     // Close the modal or perform other actions as needed

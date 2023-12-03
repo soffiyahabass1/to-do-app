@@ -113,7 +113,10 @@ form input {
   background-color: #fff;
   color: orange;
 }
-
+.submit:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
 /* toggling password*/
 .password-input {
   position: relative;

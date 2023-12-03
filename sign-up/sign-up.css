@@ -115,6 +115,10 @@ form > div {
   background-color: #fff;
   color: orange;
 }
+.submit:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
 /* JS controlled Styles */
 .hidden {
   opacity: 0;

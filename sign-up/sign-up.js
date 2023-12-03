@@ -3,6 +3,7 @@
 import Cookies from "js-cookie";
 import { router } from "../script";
 
+const signupBtn = document.getElementById("signup-btn");
 const signUpForm = document.getElementById("signUpForm");
 // parsley.init(form);
 async function signUpUser({ signUpData }) {
@@ -24,14 +25,18 @@ const errorElement = document.getElementById("error-message");
 signUpForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission
 
+  signupBtn.disabled = true;
   // Get form data
   const signUpFormData = new FormData(signUpForm);
 
   // Convert FormData to a plain object
-  let signUpFormObject = {};
-  signUpFormData.forEach(function (value, key) {
-    signUpFormObject[key] = value;
-  });
+
+  const signUpFormObject = Object.fromEntries(signUpFormData.entries());
+  // Convert FormData to a plain object
+  // let signUpFormObject = {};
+  // signUpFormData.forEach(function (value, key) {
+  //   signUpFormObject[key] = value;
+  // });
   signUpUser({ signUpData: signUpFormObject })
     .then((user) => {
       console.log(user);
@@ -43,13 +48,16 @@ signUpForm.addEventListener("submit", function (event) {
         //     : "/todo/todo.html";
         router("/todo/todo");
         // router("/todo/todo.html");
+        signupBtn.disabled = false;
       } else {
         let error = "Invalid username or password";
         errorElement.innerHTML = error;
+        signupBtn.disabled = false;
       }
       // return user;
     })
     .catch((err) => {
+      signupBtn.disabled = false;
       console.log(err);
       return;
     });

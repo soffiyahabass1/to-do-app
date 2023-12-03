@@ -4,6 +4,7 @@ import { router, togglePasswordVisibility } from "../script";
 
 import Cookies from "js-cookie";
 
+const loginBtn = document.getElementById("login-btn");
 async function loginUser({ loginData }) {
   // console.log(loginData, "is the login data");
   const formData = new URLSearchParams();
@@ -31,6 +32,7 @@ const errorElement = document.getElementById("error-message");
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission
 
+  loginBtn.disabled = true;
   // Get form data
   const loginFormData = new FormData(loginForm);
 
@@ -53,12 +55,14 @@ loginForm.addEventListener("submit", function (event) {
         router("/todo/todo");
         // router("todo/todo.html");
       } else {
+        loginBtn.disabled = false;
         let error = "Invalid username or password";
         errorElement.innerHTML = error;
       }
       // return user;
     })
     .catch((err) => {
+      loginBtn.disabled = false;
       console.log(err);
       return;
     });
