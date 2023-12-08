@@ -14,7 +14,7 @@
     <script src="login.js" type="module" defer></script>
   </head>
   <body>
-    <main class="div">
+    <main class="main-container">
       <div class="container">
         <header class="app__header">
           <button id="close-signup" class="close-modal">
@@ -22,7 +22,7 @@
           </button>
           <h1>Login</h1>
 
-          <div class="modal hidden" id="login">
+          <div class="form__container" id="login">
             <!-- <button id="close-login" class="close-modal">x</button> -->
             <form id="loginForm">
               <!-- <form id="loginForm" data-parsley-validate> -->
@@ -39,21 +39,30 @@
 
               <div class="">
                 <label for="password">password</label>
-                <input
-                  type="password"
-                  id="login-password"
-                  name="password"
-                  required
-                  autocomplete="current-password"
-                />
+                <div class="password-input">
+                  <input
+                    type="password"
+                    id="login-password"
+                    name="password"
+                    required
+                    autocomplete="current-password"
+                  />
+                  <button type="button" id="togglePassword">
+                    <i class="fa-solid fa-eye" id="show-password"></i>
+                    <i
+                      class="fa-solid fa-eye-slash hidden"
+                      id="hide-password"
+                    ></i>
+                  </button>
+                </div>
               </div>
               <a href="../todo/todo.html" class="a" style="display: none"
                 >login</a
               >
               <p id="error-message" style="color: red; margin-top: 1.5rem"></p>
-              <button type="submit" class="submit">login</button>
-              <p>
-                Don't have an account?
+              <button type="submit" class="submit" id="login-btn">login</button>
+              <p class="signup-invite">
+                <span>Don't have an account?</span>
                 <a href="../sign-up/sign-up.html" class="a"> Sign up</a>
               </p>
             </form>

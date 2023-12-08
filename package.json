@@ -4,8 +4,8 @@
   "description": "crea8genius intern develop team project",
   "default": "index.html",
   "scripts": {
-    "dev": "parcel ../to-do-app/index.html --port 3000",
-    "build": "parcel build index.html"
+    "dev": "parcel index.html --port 3000",
+    "build": "parcel build index.html --no-scope-hoist"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,10 @@
     "flatpickr": "^4.6.13",
     "js-cookie": "^3.0.5",
     "parcel": "^2.10.3"
-  }
+  },
+  "main": "script.js",
+  "devDependencies": {},
+  "keywords": [
+    "Crea8Genius"
+  ]
 }

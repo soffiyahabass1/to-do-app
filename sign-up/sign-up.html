@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="sign-up.css" />
   </head>
   <body>
-    <main class="div">
+    <main class="main-container">
       <div class="container">
         <header class="app__header">
           <button id="close-signup" class="close-modal">
@@ -21,8 +21,8 @@
           <h1>Create Account</h1>
         </header>
 
-        <div class=" " id="signup">
-          <form id="signUpForm" data-parsley-validate>
+        <div class="form__container" id="signup">
+          <form id="signUpForm">
             <div class="">
               <label for="email">Email</label>
               <input
@@ -50,22 +50,33 @@
                 autocomplete="name"
               />
             </div>
+
             <div class="">
               <label for="password">password</label>
-              <input
-                type="password"
-                id="signup-password"
-                name="password"
-                autocomplete="new-password"
-              />
+              <div class="password-input">
+                <input
+                  type="password"
+                  id="signup-password"
+                  name="password"
+                  required
+                  autocomplete="current-password"
+                />
+                <button type="button" id="togglePassword">
+                  <i class="fa-solid fa-eye" id="show-password"></i>
+                  <i
+                    class="fa-solid fa-eye-slash hidden"
+                    id="hide-password"
+                  ></i>
+                </button>
+              </div>
             </div>
             <p id="error-message" style="color: red; margin-top: 1.5rem"></p>
-            <button type="submit" class="submit">
+            <button type="submit" class="submit" id="signup-btn">
               Sign up
               <!-- <a href="../todo/todo.html">Sign up</a> -->
             </button>
-            <p>
-              Already have an account?
+            <p class="login-invite">
+              <span>Already have an account?</span>
               <a href="../login/login.html" class="a"> Log in</a>
             </p>
           </form>

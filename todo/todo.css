@@ -81,6 +81,8 @@ img {
   padding: 2rem; */
 }
 .home_btn {
+  outline: none !important;
+  border: none;
   border-radius: 100%;
   padding: 1rem;
   color: white;
@@ -99,6 +101,7 @@ img {
     color: orange;
   }
   & i {
+    pointer-events: none;
     color: white;
   }
   &:hover i {
@@ -108,7 +111,7 @@ img {
 .user-profile {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
 
   & > *:not(:first-child) {
     margin-left: 2rem;
@@ -117,9 +120,12 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
   }
 }
 .btn-logout {
+  outline: none !important;
+  border: none;
   cursor: pointer;
   border-radius: 100%;
   padding: 1rem;
@@ -146,13 +152,7 @@ img {
   color: #fff;
   margin-bottom: 1rem;
 }
-/* Task container */
-.app__task-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
+
 /* Empty task  */
 .no-tasks {
   display: flex;
@@ -192,6 +192,7 @@ p {
   text-transform: capitalize;
   margin-bottom: 10px;
 }
+/*  */
 input {
   /* position: relative; */
   width: 100%;
@@ -211,10 +212,12 @@ input {
   color: #2f363e;
   border-radius: 30px;
   cursor: pointer;
-  margin-bottom: 2rem;
   /* display: flex;
     flex-direction: row-reverse; */
   margin-left: 45rem;
+  & i {
+    pointer-events: none;
+  }
 }
 .i:hover {
   background-color: #fff;
@@ -259,12 +262,13 @@ input {
   color: #fff;
 }
 .app__tasks-modal {
+  backdrop-filter: blur(10px);
   position: fixed;
   z-index: 100;
   width: 100%;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   background-color: rgba(128, 128, 128, 0.705);
   display: flex;
   flex-direction: column;
@@ -273,9 +277,8 @@ input {
   justify-content: center;
 }
 .app__tasks-modal--content {
-  width: 100%;
+  width: 60%;
   margin: auto;
-  height: 700px;
   border-radius: 30px;
   background-color: wheat;
   padding: 4rem;
@@ -297,26 +300,24 @@ input {
 }
 .taskk {
   position: relative;
- 
 }
-.app-tab-window {
+/* .app-tab-window {
   position: absolute;
   & li {
     position: relative;
   }
-}
+} */
 .taskk li {
   position: relative;
-  width: 100%;
+  width: calc(100% - 40px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #fff;
   margin: 20px;
   font-size: 1.5rem;
-  margin-top: 6rem;
-  /* padding-right: 30px; */
-  /* padding: 10px; */
+  padding-right: 30px;
+  padding: 10px;
   min-height: 45px;
   cursor: pointer;
   border-radius: 22.5px;
@@ -379,16 +380,21 @@ li::after {
 }
 /* JS controlled Styles */
 .hidden {
-  opacity: 1;
-  backface-visibility: visible;
-  pointer-events: visible;
+  opacity: 0;
+  backface-visibility: hidden;
+  pointer-events: none;
 }
 
 .floating-btn {
+  width: 6.25rem;
+  height: 6.25rem;
   position: fixed;
   bottom: 10%;
-  right: 10%;
-  transform: translate(-50%);
+  right: 0%;
+  transform: translate(-50%, -50%);
+
+  outline: none !important;
+  border: none;
 
   border-radius: 100%;
   padding: 2rem;
@@ -432,5 +438,176 @@ li::after {
   &:hover {
     background-color: orange;
     color: white;
+  }
+}
+/* Task container */
+.app__task-container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; */
+  /* background-color: red; */
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+/* Task Items */
+.app-tab-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+.task-item {
+  background: #000;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 5% 50% 25% 10%;
+  column-gap: 2%;
+  padding: 2rem;
+  border-radius: 10px;
+  transition: var(--transition);
+  cursor: default;
+
+  box-shadow: 2px 2px 2px 4px rgba(128, 128, 128, 0.13);
+}
+.task-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  & > * {
+    margin: 0;
+  }
+
+  & > *:first-child {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+}
+.task-item-date {
+  font-weight: 700;
+  font-size: 2rem;
+}
+.task-item-btns {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  & > *:first-child {
+    margin-right: 2rem;
+  }
+  & button {
+    padding: 2rem;
+    background: transparent;
+    border: 1px solid orange;
+    color: orange;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: orange;
+      color: white;
+    }
+    & i {
+      font-size: 2rem;
+      pointer-events: none;
+      color: currentColor;
+    }
+  }
+}
+
+/* customized checkbox */
+/* .custom-checkbox {
+  position: relative;
+}
+
+.hidden-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox-label {
+  width: 24px;
+  height: 24px;
+  background-color: orange;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.tick-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  display: none;
+}
+
+.hidden-checkbox:checked + .custom-checkbox-label {
+  background-color: orange;
+}
+
+.hidden-checkbox:checked + .custom-checkbox-label .tick-mark {
+  display: block;
+} */
+.task-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & input {
+    appearance: none;
+    width: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    border: 1px solid orange;
+    &:checked {
+      background: orange;
+    }
+  }
+}
+.edit-task-checkbox {
+  align-self: flex-start;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 1.5rem;
+
+  & input {
+    cursor: pointer;
+    appearance: none;
+    width: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    /* border: 1px solid orange; */
+    background-color: white;
+    &:checked {
+      background: orange;
+    }
+  }
+
+  & label {
+    font-size: 2rem;
   }
 }

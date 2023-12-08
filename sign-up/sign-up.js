@@ -3,6 +3,7 @@
 import Cookies from "js-cookie";
 import { router } from "../script";
 
+const signupBtn = document.getElementById("signup-btn");
 const signUpForm = document.getElementById("signUpForm");
 // parsley.init(form);
 async function signUpUser({ signUpData }) {
@@ -24,27 +25,39 @@ const errorElement = document.getElementById("error-message");
 signUpForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission
 
+  signupBtn.disabled = true;
   // Get form data
   const signUpFormData = new FormData(signUpForm);
 
   // Convert FormData to a plain object
-  let signUpFormObject = {};
-  signUpFormData.forEach(function (value, key) {
-    signUpFormObject[key] = value;
-  });
+
+  const signUpFormObject = Object.fromEntries(signUpFormData.entries());
+  // Convert FormData to a plain object
+  // let signUpFormObject = {};
+  // signUpFormData.forEach(function (value, key) {
+  //   signUpFormObject[key] = value;
+  // });
   signUpUser({ signUpData: signUpFormObject })
     .then((user) => {
       console.log(user);
       if (Object.keys(user).length > 0) {
         Cookies.set("user_access_token", user.access_token, { path: "/" });
-        router("/todo/todo.html");
+        // const todoRoute =
+        //   process.env.NODE_ENV === "production"
+        //     ? process.env.TO_DO_ROUTE
+        //     : "/todo/todo.html";
+        router("/todo/todo");
+        // router("/todo/todo.html");
+        signupBtn.disabled = false;
       } else {
         let error = "Invalid username or password";
         errorElement.innerHTML = error;
+        signupBtn.disabled = false;
       }
       // return user;
     })
     .catch((err) => {
+      signupBtn.disabled = false;
       console.log(err);
       return;
     });
@@ -52,9 +65,23 @@ signUpForm.addEventListener("submit", function (event) {
   // Log or use the form data as needed
   // console.log("Sign up form Data:", signUpFormObject, signedUpUser);
 });
-//
-// access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZ2ZoanZrQGdtYWlsLmNvbSIsImV4cCI6MTcwMTM3MzUwOH0.lFLWg6-mfC1Xw6jRTE_6RUoo7TlGqWe1rOhnlLU5JZs";
-// email: "ngfhjvk@gmail.com";
-// first_name: "David";
-// last_name: "Yemisi";
-// token_type: "bearer";
+//! showing password
+
+const passwordInput = document.getElementById("signup-password");
+const toggleButton = document.getElementById("togglePassword");
+const showIcon = document.getElementById("show-password");
+const hideIcon = document.getElementById("hide-password");
+
+toggleButton.addEventListener("click", () => {
+  console.log(passwordInput, toggleButton);
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    hideIcon.classList.remove("hidden");
+    showIcon.classList.add("hidden");
+  } else {
+    passwordInput.type = "password";
+
+    hideIcon.classList.add("hidden");
+    showIcon.classList.remove("hidden");
+  }
+});

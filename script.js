@@ -1,8 +1,14 @@
 //! UPDATE UI ON DATA Change
-export function renderTasks(tasks, id) {
+
+import { env } from "node:process";
+
+export function renderTasks({ tasks, id }) {
+  // console.log(tasks, id, "is the tab data");
   if (!id) return;
+
   const tasksContainer = document.getElementById(id);
 
+  // console.log(tasksContainer, "is the task container");
   tasksContainer.innerHTML = ""; // Clear existing content
 
   tasks.forEach((task) => {
@@ -11,140 +17,62 @@ export function renderTasks(tasks, id) {
   });
 }
 function createTaskElement(task) {
-  const taskElement = document.createElement("li");
-  // const taskElement = document.createElement("div");
-  // taskElement.classList.add("task");
+  const taskElement = document.createElement("div");
+  taskElement.classList.add("task-item");
   taskElement.setAttribute("id", task.id);
 
   taskElement.innerHTML = `
- 
-                    ${task.title}
-                    <button class="edit" id={${task.id}}><i class="fas fa-edit"></i></button>
-                    <button id={${task.id}}><i class="fa-solid fa-xmark"></i></button>
+  <div class="task-checkbox">
+  <input type="checkbox" ${task.is_completed ? "checked" : ""}  data-id=${
+    task.id
+  } class="task-status" />
+  </div>
+  <div class="task-item-details">
+    <p>${task.title}</p>
+    <p>${task.description}</p>
+  </div>
+  <p class="task-item-date">${task.due_date}</p>
+  <div class="task-item-btns">
+    <button  class="edit-task"  data-id=${
+      task.id
+    } ><i class="btn-icon fas fa-edit"></i></button>
+    <button class="delete-task" data-id=${
+      task.id
+    }><i class=" btn-icon fa-solid fa-trash-can"></i></button>
+  </div>
             
                     `;
-  // <p>${task.date}</p>
-  // <p>${task.title}</p>
-  // <p>${task.description}</p>
-  // <div class="task-buttons">
-  //   <button><i class="fa-thin fa-pen"></i></button>
-  //   <button><i class="fa-solid fa-xmark"></i></button>
-  // </div>
-
   return taskElement;
 }
 //! Routing
 export function router(path) {
+  console.log(path, "This is the next path");
   if (!path) return;
+
   const base_path =
-    process.env.NODE_ENV === "production"
-      ? process.env.BASE_URL
+    env.NODE_ENV === "production"
+      ? env.BASE_URL
       : "http://localhost:3000/";
+      console.log(base_path);
   // Specify the URL of the success page
   // const successPageURL = "/success";
-  const new_path = `${base_path}${path}`;
-  console.log(new_path);
+  // const new_path = `${base_path}${path}`;
+  // const new_path = `http://localhost:3000/${path}`;
+  const new_path = `https://to-do-app-cre8gen-interns.netlify.app${path}`;
+  // console.log(new_path);
 
   // Redirect to the success page
   // window.location.replace(new_path);
   window.location.href = new_path;
 }
 
-const BASE_API_URL = `https://todo-fastapi-338k.onrender.com/api`;
-//! Dummy data pending the fetching time
-export const dummyTasks = [
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: true
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: true
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: true
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
-  },
-  {
-    title: "Test Task",
-    description: "This is just a test task",
-    date: "",
-    isCompleted: false
+//! Showing password
+export function togglePasswordVisibility({ passwordInput, toggleButton }) {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleButton.textContent = `<i class="fa-solid fa-eye"></i>`;
+  } else {
+    passwordInput.type = "password";
+    toggleButton.textContent = `<i class="fa-solid fa-eye-slash"></i>`;
   }
-];
-
-// });
-//! Getting all to do tasks
-async function getAllTodo() {
-  const todos = await fetch(`${BASE_API_URL}/todos`, {});
 }
-// ! open and close modals
-// // the open modal button
-// const modalOpenBtns = document.querySelectorAll(".open-modal");
-// const modalCloseBtns = document.querySelectorAll(".close-modal");
-// const modals = document.querySelectorAll(".modal");
-// modalOpenBtns.forEach((btn) =>
-//   btn.addEventListener("click", () => {
-//     modals.forEach((modal) => {
-//       // console.log(modal.id, btn.id);
-//       if (`${modal.id}-modal` === btn.id) {
-//         modal.classList.remove("hidden");
-//       } else {
-//         modal.classList.add("hidden");
-//       }
-//     });
-//   })
-// );
-// modalCloseBtns.forEach((btn) =>
-//   btn.addEventListener("click", () => {
-//     modals.forEach((modal) => {
-//       // console.log(modal.id, btn.id);
-//       if (`close-${modal.id}` === btn.id) {
-//         modal.classList.add("hidden");
-//       } else {
-//         return;
-//       }
-//     });
-//   })
-// );
-
-// const openModalBtn = document.getElementById("open-modal");
-// const closeModalBtn = document.getElementById("close-modal");
-// const modal = document.getElementById("modal");
-// openModalBtn.addEventListener("click", () => {
-//   modal.classList.toggle("hidden");
-// });
-// closeModalBtn.addEventListener("click", () => {
-//   modal.classList.toggle("hidden");
-// });
-
-// adding task
-
-// deleting task
-// editing task
-// opening task description
-// Function to create HTML structure for a each task
