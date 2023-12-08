@@ -14,7 +14,7 @@
     <script src="login.js" type="module" defer></script>
   </head>
   <body>
-    <main class="div">
+    <main class="main-container">
       <div class="container">
         <header class="app__header">
           <button id="close-signup" class="close-modal">
@@ -22,7 +22,7 @@
           </button>
           <h1>Login</h1>
 
-          <div class="" id="login">
+          <div class="form__container" id="login">
             <!-- <button id="close-login" class="close-modal">x</button> -->
             <form id="loginForm">
               <!-- <form id="loginForm" data-parsley-validate> -->
@@ -61,8 +61,8 @@
               >
               <p id="error-message" style="color: red; margin-top: 1.5rem"></p>
               <button type="submit" class="submit" id="login-btn">login</button>
-              <p>
-                Don't have an account?
+              <p class="signup-invite">
+                <span>Don't have an account?</span>
                 <a href="../sign-up/sign-up.html" class="a"> Sign up</a>
               </p>
             </form>

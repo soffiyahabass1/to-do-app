@@ -1,4 +1,7 @@
 //! UPDATE UI ON DATA Change
+
+import { env } from "node:process";
+
 export function renderTasks({ tasks, id }) {
   // console.log(tasks, id, "is the tab data");
   if (!id) return;
@@ -47,9 +50,10 @@ export function router(path) {
   if (!path) return;
 
   const base_path =
-    process.env.NODE_ENV === "production"
-      ? process.env.BASE_URL
+    env.NODE_ENV === "production"
+      ? env.BASE_URL
       : "http://localhost:3000/";
+      console.log(base_path);
   // Specify the URL of the success page
   // const successPageURL = "/success";
   // const new_path = `${base_path}${path}`;

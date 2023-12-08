@@ -35,7 +35,7 @@ p {
 .app__container {
   position: relative;
   /* width: 70%; */
-  min-width: 300px;
+  /* min-width: 300px; */
   min-height: 100%;
   margin: auto;
   /* background-image: url(./image/todo..jpeg); */
